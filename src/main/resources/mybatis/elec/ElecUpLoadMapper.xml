@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.elec.dao.ElecUpLoadDao">
+
+	<sql id="query_sql_where">
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	<sql id="all_Elec_columns">
+	
+			`id`, 
+			`user_id`,  
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`user_tell`, 
+			`user_state`, 
+			`wages_id`, 
+			`elec_type`, 
+			`elec_price`, 
+			`start`, 
+			`end`, 
+			`hu`, 
+			`elec_amount`, 
+			`elec_cost`, 
+			`elec_sum`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+	</sql>
+	
+	
+	
+	<!-- 电字上传查询条件 -->
+	<select id="getElecByUserId" parameterType="com.bootdo.elec.domain.ElecDO" resultType="com.bootdo.elec.domain.ElecDO">
+		 SELECT
+		 <include refid="all_Elec_columns"></include>
+		 FROM ELEC
+	   <where>
+		    <include refid="query_sql_where"></include>
+	   </where>	 
+
+		
+	</select> 
+	
+	
+	<!-- 电字上传解析入库 -->
+	<update id="importElecByUserId"  parameterType="com.bootdo.elec.domain.ElecDO">
+		 update ELEC set ELEC_AMOUNT = #{elecAmount} , ELEC_COST = #{elecCost} , ELEC_SUM = #{elecSum} 
+    	<where>
+		    <include refid="query_sql_where"></include>
+	    </where>	 
+	</update> 
+	
+	
+	
+	<!--电字上传插入  -->
+	<insert id="createElecNextMonth"  parameterType="com.bootdo.elec.domain.ElecDO">
+
+		INSERT INTO ELEC (USER_ID,USER_NAME,USER_TYPE,USER_ORG,USER_TELL,USER_STATE,WAGES_ID,ELEC_TYPE, ELEC_PRICE,
+		START,END,ELEC_AMOUNT,HU, ELEC_COST,ELEC_SUM,CREATE_TIME,CREATE_BY,UPDATE_TIME,UPDATE_BY,REMARK)
+		
+		VALUES(#{userId},#{userName},#{userType},#{userOrg},#{userTell},#{userState},#{wagesId},#{elecType},#{elecPrice},
+		#{start},#{end},#{elecAmount},#{hu},#{elecCost},#{elecSum},#{createTime},#{createBy},#{updateTime},#{updateBy},#{remark})
+	
+	</insert> 
+	
+	
+
+
+
+
+</mapper>

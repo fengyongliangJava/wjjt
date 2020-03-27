@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.heat.dao.HeatUpLoadDao">
+
+	<sql id="all_Heat_columns">
+			`id`,
+			`user_id`,  
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`user_tell`, 
+			`user_state`, 
+			`wages_id`, 
+			`heat_type`, 
+			`heat_price`, 
+			`heat_area`, 
+			`heat_cost`, 
+			`heat_sum`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+	</sql>
+	 
+	 
+
+	
+	
+	<update id="updateHeat" parameterType="com.bootdo.heat.domain.HeatDO">
+		update  heat  set  createTime = #{createTime}, heat_sum = heat_sum - heat_cost
+	</update>
+
+	<!--暖费生成-->
+	<select id="getAllHeatById"  resultType="com.bootdo.heat.domain.HeatDO">
+		SELECT
+		<include refid="all_Heat_columns"></include>
+		FROM HEAT
+		<where>
+			<if test="createTime != null and createTime != '' ">
+				and create_time = #{createTime}
+			</if>
+			<if test="userOrg != null and userOrg != ''">
+				and user_org = #{userOrg}
+			</if>
+		</where>
+	</select>
+	
+	<!--查询用户编号相同-->
+	<select id="getEqualUserId"  resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM HEAT he
+		<where>
+			he.user_id = #{userId}
+		</where>
+	</select>
+
+</mapper>

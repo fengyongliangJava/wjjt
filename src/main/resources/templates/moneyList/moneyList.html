@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head th:include="include :: header">
+
+</head>
+
+<style type="text/css">
+	.thbox{text-align:center; height:30px;line-height:30px;}
+	#moneyListTable tr{text-align:center;}
+	#moneyAllbox{margin:0 auto; text-align:left; height:30px; width:90px;}
+	#moneyForm{margin-top:20px;}
+	#moneyForm .form-control{width:100px;border-radius:5px;}
+	#likeResult {padding-left:10px;position:absolute;left:0;top:40px;width:180px;border: 1px solid #e4e7ee;border-top: 0;border-bottom: 0;background: #fff;max-height:300px;overflow-y:auto;overflow-x:hidden;z-index:10;width:290px;border-radius:5px;}
+	#top{width:32px;height:32px;background:url(/img/top.png);background-color:#1ab394;border-radius:50%;position:absolute;right:11px;top:310px;display:none;}
+	#close{font-size:32px;text-align:center;line-height:32px;width:32px;height:32px;background-color:#1ab394;border-radius:5px;position:absolute;right:332px;top:310px;display:none;}
+	#likeResult li {border-bottom: 1px solid #e4e7ee;line-height:30px;padding-left:4px;list-style:none;}
+	#likebox{float:right;position:relative;}
+	#userName{line-height:30px;text-indent:10px;float:left; height:30px;border:none;width:280px;}
+	#searchIcon{height:30px;width:50px;background-image:url(/img/11.png);background-color:rgba(255,255,255,0.2);background-repeat:no-repeat;background-size:100% 100%;-moz-background-size:100% 100%; border:none;}
+	#likeResult li:hover {background-color:#1ab394;border-radius:5px;}
+	#nameBox{border:1px solid #e7eaec;border-radius:5px;}
+	#moneyBtn{margin-left:5px;}
+	#moneyListTable{margin-top:20px;}
+	#money{width:173px;height:32px;border-radius:5px;}
+</style>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content ">
+
+	<div class="col-sm-12 wrapper_main_table">
+
+		<div class="ibox">
+
+			<div class="ibox-body">
+
+				<div class="fixed-table-toolbar">
+
+					<form id="moneyForm" class="form-inline" role="form">
+
+						<div class="form-group">
+							<label>日期选择：</label>
+							<input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime" placeholder="请选择年月"
+								   onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:120px;" readonly="readonly"/>
+						</div>
+
+						<div class="form-group" style="margin-left:10px;">
+							<label>用户地区：</label>
+							<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+							<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:120px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						</div>
+
+						<div class="form-group" style="margin-left:10px;">
+							<label>用户编号 ：</label>
+							<input id="userId"  name = 'userId' class="form-control"  type="text" maxlength="7" style="cursor:pointer;width:120px;border-radius:5px;"/>
+						</div>
+
+						<input id="moneyBtn" class="btn btn-primary" type="button" value="用户查询" onclick ="queryAllUser();"/>
+
+						<div id="likebox" class="form-group">
+
+							<label id="nameBox">
+								<input id="userName" name="userName" type="text"  placeholder="用户姓名" maxlength="20"/>
+								<input id="searchIcon"  type="button" style="border-left:1px solid #e7eaec;" onclick ="queryUserName();"/>
+							</label>
+							<ul id="likeResult">
+								
+							
+							</ul>
+							<div id="top"></div>
+							<a id="close" onclick ="queryUserName();">×</a>
+							
+						</div>
+
+					</form>
+
+				</div>
+
+				<table id="moneyTable" class="table table-striped table-bordered table-condensed" style="margin-top:20px;">
+					<thead>
+						<tr>
+							<td class="thbox">类型</td>
+							<td class="thbox">用户编号</td>
+							<td class="thbox">用户姓名</td>
+							<td class="thbox">缴费方式</td>
+							<td class="thbox">用户地区</td>
+							<td class="thbox">用户电话</td>
+							<td class="thbox">用户状态</td>
+							<td class="thbox">用户性质</td>
+							<td class="thbox">费用单价</td>
+							<td class="thbox">用户用量</td>
+							<td class="thbox">用户费用</td>
+							<td class="thbox">用户余额</td>
+						</tr>
+					</thead>
+					<tbody id="content">
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/moneyList/moneyList.js"></script>
+
+</body>
+</html>
+
+
+
+
+

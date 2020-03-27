@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.elec.dao.ElecPriceDao">
+
+
+    <sql id="all_ElecPrice_columns">
+        select `id`,`elec_org`,(SELECT t.`name` FROM sys_dept t WHERE t.`dept_id` = `elec_org`) AS elecOrgName,`m_elec`,`s_elec`,`g1_elec`,`g2_elec`,`g3_elec`,`wm_elec`, `ws_elec`,`wg_elec`,`mm_elec`, `ms_elec`,`z_elec`,`create_time`, `create_by`, `update_time`, `update_by`,`remark`  from elec_price
+    </sql>
+
+	<sql id="query_sql_where">
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="elecType != null and elecType != ''"> and elec_type = #{elecType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+    <select id="get" resultType="com.bootdo.elec.vo.ElecPriceVo">
+         <include refid="all_ElecPrice_columns"></include>  
+          where id = #{value}
+    </select>
+
+
+    <select id="list" resultType="com.bootdo.elec.vo.ElecPriceVo">
+ 		<include refid="all_ElecPrice_columns"></include> 
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id asc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from elec_price
+    </select>
+
+
+    <insert id="save" parameterType="com.bootdo.elec.domain.ElecPriceDO" useGeneratedKeys="true" keyProperty="id">
+        insert into elec_price
+        					 (`elec_org`,
+                                `m_elec`,
+                                `s_elec`,
+                                `g1_elec`,
+                                `g2_elec`,
+                                `g3_elec`,
+                                `wm_elec`,
+                        		`ws_elec`,
+                                `wg_elec`,
+                                `mm_elec`,
+                        		`ms_elec`,
+                                `z_elec`,
+                                `create_time`,
+                                `create_by`,
+                                `update_time`,
+                                `update_by`,
+                                `remark`)
+        values (#{elecOrg},
+                #{mElec},
+                #{sElec},
+                #{g1Elec},
+                #{g2Elec},
+                #{g3Elec},
+                #{wmElec},
+                #{wsElec},
+                #{wgElec},
+                #{mmElec},
+                #{msElec},
+                #{zElec},
+                #{createTime},
+                #{createBy},
+                #{updateTime},
+                #{updateBy},
+                #{remark})
+    </insert>
+
+
+	<update id="update" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec_price 
+		<set>
+			<if test="mElec != null and mElec != ''">m_elec = #{mElec},</if>
+            <if test="sElec != null and sElec != ''">s_elec = #{sElec},</if>
+            <if test="g1Elec != null and g1Elec != ''"> g1_elec = #{g1Elec},</if>
+            <if test="g2Elec != null and g2Elec != ''"> g2_elec = #{g2Elec},</if>
+            <if test="g3Elec != null and g3Elec != ''"> g3_elec = #{g3Elec},</if>
+            <if test="wmElec != null and wmElec != ''">wm_elec = #{wmElec},</if>
+            <if test="wsElec != null and wsElec != ''"> ws_elec = #{wsElec},</if>
+      		<if test="wgElec != null and wgElec != ''">wg_elec = #{wgElec},</if>
+      		<if test="mmElec != null and mmElec != ''">mm_elec = #{mmElec},</if>
+            <if test="msElec != null and msElec != ''"> ms_elec = #{msElec},</if>
+            <if test="zElec != null and zElec != ''"> z_elec = #{zElec},</if>
+ 			<if test="createTime != null"> create_time = #{createTime},</if>
+            <if test="updateBy != null and updateBy != ''">create_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null and remark != '' ">remark = #{remark},</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+		
+	<update id="updateMElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="mElec != null and mElec != ''" >`elec_price` = #{mElec}, </if>
+
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '1'
+	</update>
+	
+	<update id="updateSElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="sElec != null and sElec != ''">`elec_price` = #{sElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '2'
+	</update>
+
+	<update id="updateG1Elec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="g1Elec != null and g1Elec != ''">`elec_price` = #{g1Elec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '3'
+	</update>
+	
+	<update id="updateG2Elec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="g2Elec != null and g2Elec != ''">`elec_price` = #{g2Elec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '4'
+	</update>
+	
+	
+	<update id="updateG3Elec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="g3Elec != null and g3Elec != ''">`elec_price` = #{g3Elec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '5'
+	</update>
+
+
+	<update id="updateWMElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="wmElec != null and wmElec != ''">`elec_price` = #{wmElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '6'
+	</update>
+
+
+	<update id="updateWSElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="wsElec != null and wsElec != ''">`elec_price` = #{wsElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '7'
+	</update>
+
+
+
+	<update id="updateWGElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="wgElec != null and wgElec != ''">`elec_price` = #{wgElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '8'
+	</update>
+
+
+	<update id="updateMMElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="mmElec != null and mmElec != ''">`elec_price` = #{mmElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '9'
+	</update>
+
+	<update id="updateMSElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="msElec != null and msElec != ''">`elec_price` = #{msElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '10'
+	</update>
+
+
+	<update id="updateZElec" parameterType="com.bootdo.elec.domain.ElecPriceDO">
+		update elec
+		<set>
+			<if test="zElec != null and zElec != ''">`elec_price` = #{zElec}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{elecOrg}  and `create_time` = #{createTime}  and `elec_type` = '11'
+	</update>
+
+    <delete id="remove">
+        delete
+        from elec_price
+        where id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from elec_price where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

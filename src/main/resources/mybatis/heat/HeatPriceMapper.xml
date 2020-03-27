@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.heat.dao.HeatPriceDao">
+
+
+    <sql id="all_HeatPrice_columns">
+		select `id`,`heat_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `heat_org`) AS heatOrgName,`m_heat`,`s_heat`,`gm_heat`,`gs_heat`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from heat_price 
+    </sql>
+
+
+	<sql id="query_sql_where">
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="heatType != null and heatType != ''"> and heat_type = #{heatType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	<select id="get" resultType="com.bootdo.heat.vo.HeatPriceVo">
+	    <include refid="all_HeatPrice_columns"></include> 
+		where id = #{value}
+	</select>
+
+
+	<select id="list" resultType="com.bootdo.heat.vo.HeatPriceVo">
+	    <include refid="all_HeatPrice_columns"></include> 
+	
+        <where>  
+   			 <include refid="query_sql_where"></include> 
+		</where>
+		
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from heat_price
+		 <where>  
+		 	<include refid="query_sql_where"></include> 
+		 </where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.heat.domain.HeatPriceDO" useGeneratedKeys="true" keyProperty="id">
+		insert into heat_price
+		(
+			`heat_org`, 
+			`m_heat`, 
+			`s_heat`, 
+			`gm_heat`, 
+			`gs_heat`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+		)
+		values
+		(
+			#{heatOrg}, 
+			#{mHeat}, 
+			#{sHeat}, 
+			#{gmHeat}, 
+			#{gsHeat}, 
+			#{createTime}, 
+			#{createBy}, 
+			#{updateTime}, 
+			#{updateBy}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.heat.domain.HeatPriceDO">
+		update heat_price 
+		<set>
+			<if test="heatOrg != null">`heat_org` = #{heatOrg}, </if>
+			<if test="mHeat != null">`m_heat` = #{mHeat}, </if>
+			<if test="sHeat != null">`s_heat` = #{sHeat}, </if>
+			<if test="gmHeat != null">`gm_heat` = #{gmHeat}, </if>
+			<if test="gsHeat != null">`gs_heat` = #{gsHeat}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+	
+	<update id="updateMHeat" parameterType="com.bootdo.heat.domain.HeatPriceDO">
+		update heat
+		<set>
+			<if test="mHeat != null and mHeat != ''" >`heat_price` = #{mHeat}, </if>
+
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{heatOrg}  and `create_time` = #{createTime}  and `heat_type` = '1'
+	</update>
+	
+	<update id="updateSHeat" parameterType="com.bootdo.heat.domain.HeatPriceDO">
+		update heat
+		<set>
+			<if test="sHeat != null and sHeat != ''">`heat_price` = #{sHeat}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{heatOrg}  and `create_time` = #{createTime}  and `heat_type` = '2'
+	</update>
+
+	<update id="updateGMHeat" parameterType="com.bootdo.heat.domain.HeatPriceDO">
+		update heat
+		<set>
+			<if test="gmHeat != null and gmHeat != ''">`heat_price` = #{gmHeat}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{heatOrg}  and `create_time` = #{createTime}  and `heat_type` = '3'
+	</update>
+	
+	<update id="updateGSHeat" parameterType="com.bootdo.heat.domain.HeatPriceDO">
+		update heat
+		<set>
+			<if test="gsHeat != null and gsHeat != ''">`heat_price` = #{gsHeat}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where   `user_org` = #{heatOrg}  and `create_time` = #{createTime}  and `heat_type` = '4'
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	<delete id="remove">
+		delete from heat_price where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from heat_price where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

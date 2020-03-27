@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+
+<body class="gray-bg">
+
+
+	<div class="wrapper wrapper-content ">
+	
+		<div class="col-sm-12 wrapper_main_table">
+		
+			<div class="ibox">
+			
+				<div class="ibox-body">
+				
+				<div class="fixed-table-toolbar"> 
+					
+					
+					<form id="waterUpLoadForm" class="form-inline" role="form" style="margin-top:15px;">
+					
+						   <div class="form-group" style="width:200px;">
+							   <input type="text" id='excelFile' name='excelFile' placeholder="请选择Excel" class="form-control" style="width:130px;border-radius:5px;"disabled/><input type="button" id="i-check" value="浏览" class="btn btn-primary" onclick="$('#file').click();"><input type="file" id='file' class="form-control" name="excelFile" accept=".xlsx" onchange="$('#excelFile').val($('#file').val());" style="display: none"/>
+						   </div>
+							
+		               <div class="form-group" style="margin-left:10px;">
+			               	  <label>日期选择：</label>  
+                              <input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年月"
+                               onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:120px;border-radius:5px;" readonly="readonly"/>
+			               </div>
+			               
+						   
+					   		<div class="form-group" style="margin-left:10px;">	
+							 	<label>用户地区：</label>
+								<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+								<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:120px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						   </div>	
+						   
+							<input id="btnSubmit" class="btn btn-primary" type="button" value="水费上传" onclick = "importWaterExcel()" style="margin-left:10px;" />
+						    <input id="btnSubmit" class="btn btn-primary" type="button" value="水费生成" onclick = "createWaterExcel();"/>
+						    <input id="btnSubmit" class="btn btn-primary" type="button" value="数据导出" onclick = "exprotWaterExcel();"/>
+						    <input id="btnSubmit" class="btn btn-primary" type="button" value="模板下载" onclick = "downloadExcel();"/>
+					
+						</form> 
+						 
+					</div> 
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/water/waterUpLoad/waterUpLoad.js"></script>
+</body>
+</html>

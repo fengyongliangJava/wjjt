@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.print.dao.PrintDao">
+
+	   <sql id="all_Print_columns">
+		   select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`start`,`end`,`hu`,`elec_price`,`elec_amount`,`elec_cost`,`elec_sum`,`elec_money`,`heat_price`,`heat_area`,`heat_cost`,`heat_sum`,`heat_money`,`water_price`,`water_cost`,`water_sum`,`water_money`,`print_date`,`print_money`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from print 
+	   </sql>  
+
+	   <sql id="query_Print_sql_where">
+	   	  <if test="beginDate != null and beginDate != ''">  and  `print_date` &gt;= #{beginDate} </if>
+		  <if test="endDate != null and endDate != ''">  and  `print_date` &lt;= #{endDate} </if>
+  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+  		  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+  		  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+		</sql>
+
+		<select id="get" resultType="com.bootdo.print.vo.PrintVo">
+			<include refid="all_Print_columns"></include>
+			where id = #{value}
+		</select>
+
+
+		<select id="exprotPrint" resultType="com.bootdo.print.vo.PrintVo">
+		  	<include refid="all_Print_columns"></include>
+	    <where>  
+	    
+		  	<include refid="query_Print_sql_where"></include>
+	 		
+		 </where>
+		</select>
+
+
+		<select id="list" resultType="com.bootdo.print.vo.PrintVo">
+  			<include refid="all_Print_columns"></include>
+         <where>  
+				<include refid="query_Print_sql_where"></include>
+		 </where>
+		 
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from print
+		 <where>  
+				<include refid="query_Print_sql_where"></include>
+		  </where>
+	</select>
+	
+	 
+	<insert id="save" parameterType="com.bootdo.print.domain.PrintDO" useGeneratedKeys="true" keyProperty="id">
+		insert into print
+		(
+			`user_id`, 
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`start`, 
+			`end`, 
+			`hu`, 
+			`elec_price`, 
+			`elec_amount`, 
+			`elec_cost`, 
+			`elec_sum`, 
+			`elec_money`, 
+			`heat_price`, 
+			`heat_area`, 
+			`heat_cost`, 
+			`heat_sum`, 
+			`heat_money`, 
+			`water_price`, 
+			`water_cost`, 
+			`water_sum`, 
+			`water_money`, 
+			`print_date`, 
+			`print_money`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+		)
+		values
+		(
+			#{userId}, 
+			#{userName}, 
+			#{userType}, 
+			#{userOrg}, 
+			#{start}, 
+			#{end}, 
+			#{hu}, 
+			#{elecPrice}, 
+			#{elecAmount}, 
+			#{elecCost}, 
+			#{elecSum}, 
+			#{elecMoney}, 
+			#{heatPrice}, 
+			#{heatArea}, 
+			#{heatCost}, 
+			#{heatSum}, 
+			#{heatMoney}, 
+			#{waterPrice}, 
+			#{waterCost}, 
+			#{waterSum}, 
+			#{waterMoney}, 
+			#{printDate}, 
+			#{printMoney}, 
+			#{createTime}, 
+			#{createBy}, 
+			#{updateTime}, 
+			#{updateBy}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.print.domain.PrintDO">
+		update print 
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="userName != null">`user_name` = #{userName}, </if>
+			<if test="userType != null">`user_type` = #{userType}, </if>
+			<if test="userOrg != null">`user_org` = #{userOrg}, </if>
+			<if test="start != null">`start` = #{start}, </if>
+			<if test="end != null">`end` = #{end}, </if>
+			<if test="hu != null">`hu` = #{hu}, </if>
+			<if test="elecPrice != null">`elec_price` = #{elecPrice}, </if>
+			<if test="elecAmount != null">`elec_amount` = #{elecAmount}, </if>
+			<if test="elecCost != null">`elec_cost` = #{elecCost}, </if>
+			<if test="elecSum != null">`elec_sum` = #{elecSum}, </if>
+			<if test="elecMoney != null">`elec_money` = #{elecMoney}, </if>
+			<if test="heatPrice != null">`heat_price` = #{heatPrice}, </if>
+			<if test="heatArea != null">`heat_area` = #{heatArea}, </if>
+			<if test="heatCost != null">`heat_cost` = #{heatCost}, </if>
+			<if test="heatSum != null">`heat_sum` = #{heatSum}, </if>
+			<if test="heatMoney != null">`heat_money` = #{heatMoney}, </if>
+			<if test="waterPrice != null">`water_price` = #{waterPrice}, </if>
+			<if test="waterCost != null">`water_cost` = #{waterCost}, </if>
+			<if test="waterSum != null">`water_sum` = #{waterSum}, </if>
+			<if test="waterMoney != null">`water_money` = #{waterMoney}, </if>
+			<if test="printMoney != null">`print_money` = #{printMoney}, </if>
+		    <if test="printDate != null">`print_date` = #{printDate}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from print where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from print where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+
+	<select id="batchPrint" resultType="com.bootdo.print.vo.PrintVo">
+		<include refid="all_Print_columns"></include>
+		where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+
+	<select id="selectByCondition" resultType="com.bootdo.print.vo.PrintVo">
+		<include refid="all_Print_columns"></include>
+		where user_id = #{userId} and user_org = #{userOrg} and create_time = #{createTime}  and date_format(print_date,'%Y-%m-%d')  =  date_format(#{moneyDate},'%Y-%m-%d')
+	</select>
+
+
+</mapper>

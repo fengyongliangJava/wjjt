@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<title>59集团专用计算器</title>
+<head th:include="include :: header"></head>
+<link href="/css/sysutils/calputer.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <div class="cac">
+   		<div class="c_title">59集团专用计算器</div>
+   		<div class="c_show">
+   			<input id="result" type="text" class="c_txt" value="0" onfocus="this.blur()"/>
+   		</div>
+   		<div class="c_key">
+   		<ul>
+                <li onclick="command(7);">7</li>
+				<li onclick="command(8);">8</li>
+				<li onclick="command(9);">9</li>
+				<li class="c_tool">←</li>
+				<li class="c_tool" onclick="clearzero('j');">C</li>
+				<li onclick="command(4);">4</li>
+				<li onclick="command(5);">5</li>
+				<li onclick="command(6);">6</li>
+				<li class="c_tool" onclick="tools('*','g');">×</li>
+				<li class="c_tool" onclick="tools('/','g');">÷</li>
+				<li onclick="command(1);">1</li>
+				<li onclick="command(2);">2</li>
+				<li onclick="command(3);">3</li>
+				<li class="c_tool" onclick="tools('+','g');">+</li>
+				<li class="c_tool" onclick="tools('-','g');">-</li>
+				<li onclick="command(0);">0</li>
+				<li onclick="command(0);">00</li>
+				<li onclick="dot('g');">.</li>
+				<li class="c_tool" onclick="tools('%','g');">%</li>
+				<li class="c_equ" onclick="equal('j')">=</li>
+				<div class="clear"></div>
+   		</ul>
+   		
+   		</div>
+   		
+   		<div class="c_welcome">欢迎使用五九集团计算器！              <p><a onclick="bofang()">静音/播放</a></p></div>
+   </div>
+	<!-- end cac -->
+	<div id="audioBox"></div>
+	
+	
+	<script type="text/javascript" src="/js/appjs/sysutils/calputer.js"></script>
+	
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootdo.elec.dao.ElecDao">
+
+ 	<sql id="all_Elec_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName, `user_tell`,`user_state`,`wages_id`,`elec_type`,`elec_price`,`start`,`end`,`hu`,`elec_amount`,`elec_cost`,`elec_sum`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from elec
+	</sql>  
+
+	<sql id="query_Count_sql_where">
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="elecType != null and elecType != ''"> and elec_type = #{elecType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	<sql id="query_Owe_sql_where">
+	   `elec_sum`  &lt; 0
+		<include refid="query_Count_sql_where"></include>
+ 	</sql>
+	
+	
+	<sql id="query_CountYY_sql_where">
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="elecType != null and elecType != ''"> and elec_type = #{elecType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+	
+	
+	
+	<!--查询上个的日期条件-->
+	<sql id="query_last_month">
+		<if test="createTime != null and createTime != ''">
+		and PERIOD_DIFF( date_format(CONCAT(#{createTime},-01) , '%Y%m' ) , date_format( CONCAT(create_time,"-01"), '%Y%m' ) ) =1
+		</if>
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+	
+	<select id="get" resultType="com.bootdo.elec.vo.ElecVo">
+		 <include refid="all_Elec_columns"></include>
+		 where id = #{value}
+	</select>
+	
+	
+	
+	<select id="exprotElec"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include>
+    	<where>
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	</select>
+	
+	
+	<select id="exprotElecPre"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include>
+    	<where>
+    		 `elec_sum`  &gt;= 0
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	</select>
+
+
+	<select id="exprotElecPreYY"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include>
+    	<where>
+       	    `elec_sum`   &gt;=  0
+    	    <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>
+		    <include refid="query_CountYY_sql_where"></include>
+	   </where>	 
+	    order by create_time asc 
+	</select>
+	
+	
+	<select id="exprotElecOwe"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include>
+    	<where>
+    		<include refid="query_Owe_sql_where"></include>
+	   </where>	
+	</select>
+	
+
+	<select id="exprotElecOweYY"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include>
+    	<where>
+    	     `elec_sum`   &lt; 0
+    	    <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>
+		    <include refid="query_CountYY_sql_where"></include>
+	   </where>	 
+	   order by create_time asc
+	</select>
+
+
+
+	<select id="list" resultType="com.bootdo.elec.vo.ElecVo">
+	    <include refid="all_Elec_columns"></include>
+    	<where>
+    		 <if test='queryType !=null and queryType == "2"'>
+	            and  `elec_sum`   &lt; 0
+	        </if>
+		    <include refid="query_Count_sql_where"></include>
+		    
+	   </where>	  
+	      		     	
+	      		     	  	
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from elec
+		<where>
+		 	 <if test='queryType !=null and queryType == "2"'>
+	            and  `elec_sum`   &lt; 0
+	        </if>
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	</select>
+	 
+	 
+	 
+
+
+	 
+	 
+	<insert id="save" parameterType="com.bootdo.elec.domain.ElecDO" useGeneratedKeys="true" keyProperty="id">
+	
+		insert into elec
+		
+		(
+			`user_id`, 
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`user_tell`, 
+			`user_state`, 
+			`wages_id`, 
+			`elec_type`, 
+			`elec_price`, 
+			`start`, 
+			`end`, 
+			`hu`, 
+			`elec_amount`, 
+			`elec_cost`, 
+			`elec_sum`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+		)
+		values
+		(
+			#{userId}, 
+			#{userName}, 
+			#{userType}, 
+			#{userOrg}, 
+			#{userTell}, 
+			#{userState}, 
+			#{wagesId}, 
+			#{elecType}, 
+			#{elecPrice}, 
+			#{start}, 
+			#{end}, 
+			#{hu}, 
+			#{elecAmount}, 
+			#{elecCost}, 
+			#{elecSum}, 
+			#{createTime}, 
+			#{createBy}, 
+			#{updateTime}, 
+			#{updateBy}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.elec.domain.ElecDO">
+		update elec 
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="userName != null">`user_name` = #{userName}, </if>
+			<if test="userType != null">`user_type` = #{userType}, </if>
+			<if test="userOrg != null">`user_org` = #{userOrg}, </if>
+			<if test="userTell != null">`user_tell` = #{userTell}, </if>
+			<if test="userState != null">`user_state` = #{userState}, </if>
+			<if test="wagesId != null">`wages_id` = #{wagesId}, </if>
+			<if test="elecType != null">`elec_type` = #{elecType}, </if>
+			<if test="elecPrice != null">`elec_price` = #{elecPrice}, </if>
+			<if test="start != null">`start` = #{start}, </if>
+			<if test="end != null">`end` = #{end}, </if>
+			<if test="hu != null">`hu` = #{hu}, </if>
+			<if test="elecAmount != null">`elec_amount` = #{elecAmount}, </if>
+			<if test="elecCost != null">`elec_cost` = #{elecCost}, </if>
+			<if test="elecSum != null">`elec_sum` = #{elecSum}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+	<update id="updateState" parameterType="com.bootdo.elec.domain.ElecDO">
+		update elec  set  `start`= 0, `end` = 0, `elec_amount` = 0, `elec_cost` = 0  where id = #{id}
+	</update>
+	
+	
+	<delete id="remove">
+		delete from elec where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from elec where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+
+<!-- 欠费统计 start -->	
+
+	<select id="ElecCountOwe"  resultType="int">
+	    SELECT COUNT(ID) FROM ELEC
+	      <where>  
+		  	<include refid="query_Owe_sql_where"></include>
+		 </where>
+	</select>  
+
+ 	<select id="ElecSumOwe"  resultType="java.math.BigDecimal">
+	   SELECT SUM(ELEC_SUM) FROM ELEC
+	      <where>  
+		  	<include refid="query_Owe_sql_where"></include>
+		 </where>
+	</select>  
+	
+<!-- 欠费统计 end -->	
+
+
+
+
+<!-- 月统计表格  start	 -->	
+
+ 
+
+	<select id="ElecAmountMM"  resultType="int">
+		select ifnull(SUM(elec_amount),0) from elec
+		<where>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+
+
+
+	<select id="PreElecCountMMOld"  resultType="int">
+		select  COUNT(*) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="PreElecSumMMOld"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="OweElecCountMMOld"  resultType="int">
+		select  COUNT(*) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="OweElecSumMMOld"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	
+	
+
+	
+	
+	<!--应收-->
+	<select id="ElecCostMMCount"  resultType="int">
+		select COUNT(ID) from elec
+		<where>
+			<if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="ElecCostMMSum"  resultType="java.math.BigDecimal">
+		select ifnull(SUM(elec_cost),0) from elec
+		<where>
+			<if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_Count_sql_where"></include>
+			
+		</where>
+	</select>
+	
+	
+	
+	
+	<!--实收-->
+	<select id="ElecLogMMCount"  resultType="int">
+		select COUNT(ID) from elec_log
+		<where>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="ElecLogMMSum"  resultType="java.math.BigDecimal">
+		select ifnull(SUM(elec_money),0) from elec_log
+		<where>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<!--期末预存-->
+	<select id="PreElecCountMMNew"  resultType="int">
+		select  COUNT(ID) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreElecSumMMNew"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<!--期末欠款-->
+	<select id="OweElecCountMMNew"  resultType="int">
+		select  COUNT(ID) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweElecSumMMNew"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+
+<!-- 月统计表格  end	 -->	
+
+
+
+
+
+
+
+
+
+<!-- 年统计表格  srart -->	
+
+ 
+	
+	<sql id="query_newdate_sql_where">
+	<!--      <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>  -->
+		<if test="createTime != null and createTime != ''"> and DATE_FORMAT(CONCAT(create_time,'-01'),'%Y') = #{createTime}</if> 
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+	<sql id="query_newdatemax_sql_where">
+    	<if test="createTime != null and createTime != ''"> and create_time = (select MAX(create_time) from elec where DATE_FORMAT(CONCAT(create_time,'-01'),'%Y') = #{createTime})</if> 
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+
+
+
+
+	<!--年初预存-->
+	<select id="PreElecCountYYOld"  resultType="int">
+		select  COUNT(*) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreElecSumYYOld"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<!--年初欠款-->
+	<select id="OweElecCountYYOld"  resultType="int">
+		select  COUNT(*) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweElecSumYYOld"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	<select id="ElecPrice"  resultType="com.bootdo.elec.domain.ElecPriceDO">
+		select m_elec,s_elec,g1_elec,g2_elec,g3_elec,wm_elec,ws_elec,wg_elec,mm_elec,ms_elec,z_elec,elec_org from elec_price
+	</select>
+
+
+	<select id="ElecAmountYY"  resultType="int">
+		select ifnull(SUM(elec_amount),0) from elec
+		<where>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	
+	<!--应收-->
+	<select id="ElecCostYYCount"  resultType="int">
+		select COUNT(ID) from elec
+		<where>
+			<if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	<select id="ElecCostYYSum"  resultType="java.math.BigDecimal">
+		select ifnull(SUM(elec_cost),0) from elec
+		<where>
+			<if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	<!--实收-->
+	<select id="ElecLogYYCount"  resultType="int">
+		select COUNT(ID) from elec_log
+		<where>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	<select id="ElecLogYYSum"  resultType="java.math.BigDecimal">
+		select ifnull(SUM(elec_money),0) from elec_log
+		<where>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+<!--期末预存-->
+	<select id="PreElecCountYYNew"  resultType="int">
+		select  COUNT(ID) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreElecSumYYNew"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			`elec_sum`   &gt;=  0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	
+	<!--期末欠款-->
+	<select id="OweElecCountYYNew"  resultType="int">
+		select  COUNT(ID) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweElecSumYYNew"  resultType="java.math.BigDecimal">
+		select  ifnull(SUM(elec_sum),0) from elec
+		<where>
+			elec_sum &lt;0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	
+	
+<!-- 年统计表格 end -->
+
+
+
+
+
+
+
+</mapper>

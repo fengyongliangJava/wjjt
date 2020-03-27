@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.moneyLog.dao.WaterLogDao">
+
+ 	<sql id="all_WaterLog_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,`water_type`,`water_money`,`money_date`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from water_log 
+	</sql>  
+
+	<sql id="query_Count_sql_where">   
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="waterType != null and waterType != ''"> and water_type = #{waterType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+	<sql id="query_CountDD_sql_where">   
+	  <if test="beginDate != null and beginDate != ''"> and  `money_date` &gt;= #{beginDate}</if>
+      <if test="endDate != null and endDate != ''">  and  `money_date` &lt;= #{endDate}</if>  
+	  <include refid="query_Count_sql_where"></include>
+	</sql>
+ 	
+ 	<sql id="query_CountMM_sql_where">   
+   		<if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+		<include refid="query_Count_sql_where"></include>
+	</sql>
+	
+	
+	
+	
+<select id="get" resultType="com.bootdo.moneyLog.vo.WaterLogVo">
+<include refid="all_WaterLog_columns"></include>
+ where id = #{value}
+</select>
+
+
+
+<select id="exprotWaterLogDD" resultType="com.bootdo.moneyLog.vo.WaterLogVo">
+	<include refid="all_WaterLog_columns"></include>
+    <where>  
+  		<include refid="query_CountDD_sql_where"></include>
+ 	</where>
+</select>
+
+
+
+<select id="exprotWaterLogMM" resultType="com.bootdo.moneyLog.vo.WaterLogVo">
+	<include refid="all_WaterLog_columns"></include>
+    <where>  
+  		<include refid="query_CountMM_sql_where"></include>
+ 	</where>
+</select>
+
+
+
+<select id="exprotWaterLogYY" resultType="com.bootdo.moneyLog.vo.WaterLogVo">
+	<include refid="all_WaterLog_columns"></include>
+  	   <where>
+    		<if test="createTime != null and createTime != ''"> and `create_time`  LIKE CONCAT('%',#{createTime},'%')</if>
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	    order by create_time asc
+</select>
+
+
+
+
+<select id="list" resultType="com.bootdo.moneyLog.vo.WaterLogVo">
+
+		<include refid="all_WaterLog_columns"></include>
+        <where>  
+			<include refid="query_CountDD_sql_where"></include>
+		 </where>
+		 
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+		
+	</select>
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from water_log
+		 <where>  
+			<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.moneyLog.domain.WaterLogDO" useGeneratedKeys="true" keyProperty="id">
+		insert into water_log
+		(
+			`user_id`, 
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`water_type`,
+			`water_money`, 
+			`money_date`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+		)
+		values
+		(
+			#{userId}, 
+			#{userName}, 
+			#{userType}, 
+			#{userOrg}, 
+			#{waterType}, 
+			#{waterMoney}, 
+			#{moneyDate}, 
+			#{createTime}, 
+			#{createBy}, 
+			#{updateTime}, 
+			#{updateBy}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.moneyLog.domain.WaterLogDO">
+		update water_log
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="userName != null">`user_name` = #{userName}, </if>
+			<if test="userType != null">`user_type` = #{userType}, </if>
+			<if test="userOrg != null">`user_org` = #{userOrg}, </if>
+			<if test="waterType != null">`water_type` = #{waterType}, </if>
+			<if test="waterMoney != null">`water_money` = #{waterMoney}, </if>
+			<if test="moneyDate != null">`money_date` = #{moneyDate}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from water_log where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from water_log where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	
+	
+<!-- 日统计  start	 -->		
+	 <select id="getWaterCountD"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+
+ 	<select id="getWaterSumD"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+<!-- 日统计  end	 -->	
+
+
+
+
+
+<!-- 日统计表格  start	 -->		
+
+	<select id="WaterLogCountA"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "A"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="WaterLogSumA"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "A"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+
+
+
+	<select id="WaterLogCountC"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "C"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="WaterLogSumC"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "C"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+	
+	
+	
+	
+	
+	
+	<select id="MWaterLogCountA"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "A"  and  water_type = "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="MWaterLogSumA"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "A"  and  water_type = "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+	<select id="MWaterLogCountC"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "C"  and  water_type = "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="MWaterLogSumC"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "C"  and  water_type = "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+	
+	
+	
+	
+	
+	
+	<select id="SWaterLogCountA"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "A"  and  water_type != "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SWaterLogSumA"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "A"  and  water_type != "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+	<select id="SWaterLogCountC"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	      		  user_type = "C"  and  water_type != "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SWaterLogSumC"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	      <where>  
+	             user_type = "C"  and  water_type != "1"
+				<include refid="query_CountDD_sql_where"></include>
+		 </where>
+	</select> 
+	
+<!-- 日统计表格  end	 -->	
+
+
+
+
+<!-- 月统计 start   -->	
+
+ 	<select id="CountMWaterLog"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	    <where>  
+	    	 WATER_TYPE = "1"
+		  	<include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SumMWaterLog"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+	    	  WATER_TYPE = "1"
+	    	  <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select>  
+	
+	
+ 	<select id="CountS1WaterLog"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	    	  WATER_TYPE = "2"
+	    	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SumS1WaterLog"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+	    	  WATER_TYPE = "2"
+ 		   	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select> 
+	
+	
+	<select id="CountS2WaterLog"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	    	  WATER_TYPE = "3"
+	    	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SumS2WaterLog"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+	    	  WATER_TYPE = "3"
+ 		   	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select> 
+	
+	
+	<select id="CountS3WaterLog"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER_LOG
+	      <where>  
+	    	  WATER_TYPE = "4"
+	    	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="SumS3WaterLog"  resultType="java.math.BigDecimal">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+	    	  WATER_TYPE = "4"
+ 		   	 <include refid="query_CountMM_sql_where"></include>
+		 </where>
+	</select> 
+
+<!-- 月统计  end	 -->	
+	
+	
+	
+	
+	
+	
+
+<!-- 年统计 start	 -->	
+	   	
+	 <select id="Count1WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-01")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum1WaterLog"  resultType="java.lang.Integer">
+	   SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-01")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+	   	
+	   	
+	 <select id="Count2WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-02")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum2WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-02")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+	   	
+	   	  	
+	   	  	
+	  
+	 <select id="Count3WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-03")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum3WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-03")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 	
+	
+	
+	 <select id="Count4WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-04")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum4WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-04")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+ 	  
+ 	  
+ 	  
+ 	  
+ 	<select id="Count5WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-05")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum5WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-05")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>   
+ 	  
+ 	  
+ 	  
+ 	 <select id="Count6WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-06")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum6WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-06")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+ 	  
+ 	  
+ 	  
+ 	  
+ 	 <select id="Count7WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-07")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum7WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-07")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+ 	  
+ 	  
+ 	  
+ 	 <select id="Count8WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-08")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum8WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-08")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+ 	  
+ 	  
+ 	  
+ 	 <select id="Count9WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-09")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum9WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-09")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+	
+	
+	<select id="Count10WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-10")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum10WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-10")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+ 	  
+ 	  
+ 	  
+ 	 <select id="Count11WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-11")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum11WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-11")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+
+
+
+	 <select id="Count12WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(COUNT(ID),0) FROM WATER_LOG
+	      <where>  
+	        <if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-12")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>  
+ 	<select id="Sum12WaterLog"  resultType="java.lang.Integer">
+	    SELECT ifnull(SUM(WATER_MONEY),0) FROM WATER_LOG
+	    <where>  
+ 		   	<if test="createTime != null and createTime != ''"> and  `create_time` = CONCAT("${createTime}","-12")</if>
+		  	<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select> 
+
+
+</mapper>

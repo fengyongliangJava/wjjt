@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+	
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content ">
+	
+		<div class="col-sm-12 wrapper_main_table">
+		
+			<div class="ibox">
+			
+				<div class="ibox-body">
+				
+				<div class="fixed-table-toolbar"> 
+					
+					<form id="printForm" class="form-inline" role="form" style="margin-top:15px;">
+							
+				           <div class="form-group">
+			               	  <label>日期选择：</label>  
+                              <input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年月日"
+                               onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" style="background-color: #fff;width:120px;border-radius:5px;" readonly="readonly"/>
+			               </div>
+
+						   
+						   <div class="form-group" style="margin-left:10px;">	
+							 	<label>用户地区：</label>
+								<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+								<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:100px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						   </div>	
+						   
+						   
+						   <div class="form-group" style="margin-left:10px;">	
+							 	<label>交费类型：</label>
+								<select data-placeholder="选择交费类型" name="userType" id="userType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						   </div>	
+						   
+						   
+						   <div class="form-group" style="margin-left:10px;">		
+						 		<label>用户编号 ：</label>  
+							   	<input id="userId"  name="userId" class="form-control"  type="text" maxlength="7" style="width:100px;border-radius:5px;"/>
+						   </div>	
+						   
+							<input id="btnSubmit" class="btn btn-primary" type="button" value="票据查询"    onclick = "reLoad();"/>
+							<input id="btnSubmit" class="btn btn-primary" type="button" value="导出明细"    onclick = "exprotPrint();" />
+
+					</form> 
+					
+					<div class="columns pull-left">
+						<button shiro:hasPermission="print:print:add" type="button" class="btn  btn-primary" onclick="batchPrint();">
+							<i class="fa fa-plane" aria-hidden="true"></i>批量打印
+						</button> 
+						<button shiro:hasPermission="print:print:batchRemove" type="button" class="btn  btn-danger"
+							onclick="batchRemove();">
+							<i class="fa fa-trash" aria-hidden="true"></i>批量删除
+						</button>
+					</div>	 
+				</div> 
+					
+				     <table id="printTable" data-mobile-responsive="true">
+						<!-- 	style="table-layout:fixed;width:3000px;" -->
+				     </table>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_add_h = 'hidden';
+				var s_batchRemove_h = 'hidden';
+				var s_batchPrint_h = 'hidden';
+			</script>
+		</div>
+		
+		
+		<div shiro:hasPermission="print:print:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="print:print:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		
+		<div shiro:hasPermission="print:print:add">
+			<script type="text/javascript">
+				var s_add_h = '';
+			</script>
+		</div>
+		
+		<div shiro:hasPermission="print:print:batchRemove">
+			<script type="text/javascript">
+				var s_batchRemove_h = '';
+			</script>
+		</div>
+		
+		<div shiro:hasPermission="print:print:batchPrint">
+			<script type="text/javascript">
+				var s_batchPrint_h = '';
+			</script>
+		</div>
+	</div>
+		
+	
+	<div th:include="include :: footer"></div>
+
+	
+ 	<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA"width=0 height=0>
+		<embed id="LODOP_EM" type="application/x-print-lodop"width=0 height=0></embed>
+	</object>
+
+	<script type="text/javascript" src="/js/appjs/print/print/print.js"></script>  
+	
+
+	
+
+</body>
+</html>

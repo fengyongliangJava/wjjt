@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${print.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户编号：</label>
+								<div class="col-sm-4">
+									<input id="userId" name="userId" th:value="${print.userId}" class="form-control" type="text" maxlength="7" />
+								</div>
+								<label class="col-sm-2 control-label">用户姓名：</label>
+								<div class="col-sm-4">
+									<input id="userName" name="userName" th:value="${print.userName}" class="form-control" type="text" maxlength="30" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户类型：</label>
+								<div class="col-sm-4">
+									<input id="TuserType" name="TuserType" th:value="${print.userType}" class="form-control" type="hidden">
+									<select data-placeholder="选择用户类型" name="userType" id="userType"
+										class="form-control chosen-select" tabindex="2"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<label class="col-sm-2 control-label">用户归属：</label>
+								<div class="col-sm-4">
+									<input id="userOrg" name="userOrg" th:value="${print.userOrg}" class="hidden" type="text">
+									<input id="userOrgName" name="userOrgName"
+										class="form-control" type="text" style="cursor: pointer;"
+										onclick="openDept()" readonly="readonly" placeholder="用户归属" th:value="${print.userOrgName}">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">上月电表：</label>
+								<div class="col-sm-4">
+									<input id="start" name="start" th:value="${print.start}" class="form-control" type="text" maxlength="5" />
+								</div>
+								<label class="col-sm-2 control-label">本月电表：</label>
+								<div class="col-sm-4">
+									<input id="end" name="end" th:value="${print.end}" class="form-control" type="text" maxlength="5" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">互感比：</label>
+								<div class="col-sm-4">
+									<input id="hu" name="hu" th:value="${print.hu}" class="form-control" type="text" maxlength="3" />
+								</div>
+								<label class="col-sm-2 control-label">电费单价：</label>
+								<div class="col-sm-4">
+									<input id="elecPrice" name="elecPrice" th:value="${print.elecPrice}" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户电量：</label>
+								<div class="col-sm-4">
+									<input id="elecAmount" name="elecAmount" th:value="${print.elecAmount}" class="form-control" type="text" maxlength="7" />
+								</div>
+								<label class="col-sm-2 control-label">用户电费：</label>
+								<div class="col-sm-4">
+									<input id="elecCost" name="elecCost" th:value="${print.elecCost}" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">电费余额：</label>
+								<div class="col-sm-4">
+									<input id="elecSum" name="elecSum" th:value="${print.elecSum}" class="form-control" type="text" maxlength="7" />
+								</div>
+								<label class="col-sm-2 control-label">电费缴费：</label>
+								<div class="col-sm-4">
+									<input id="elecMoney" name="elecMoney" th:value="${print.elecMoney}" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">暖费单价：</label>
+								<div class="col-sm-4">
+									<input id="heatPrice" name="heatPrice" th:value="${print.heatPrice}" class="form-control" type="text" maxlength="3" />
+								</div>
+								<label class="col-sm-2 control-label">暖费面积：</label>
+								<div class="col-sm-4">
+									<input id="heatArea" name="heatArea" th:value="${print.heatArea}" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户暖费：</label>
+								<div class="col-sm-4">
+									<input id="heatCost" name="heatCost" th:value="${print.heatCost}" class="form-control" type="text" maxlength="8" />
+								</div>
+								<label class="col-sm-2 control-label">暖费余额：</label>
+								<div class="col-sm-4">
+									<input id="heatSum" name="heatSum" th:value="${print.heatSum}" class="form-control" type="text" maxlength="9" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">暖费缴费：</label>
+								<div class="col-sm-4">
+									<input id="heatMoney" name="heatMoney" th:value="${print.heatMoney}" class="form-control" type="text" maxlength="7" />
+								</div>
+								<label class="col-sm-2 control-label">水费单价：</label>
+								<div class="col-sm-4">
+									<input id="waterPrice" name="waterPrice" th:value="${print.waterPrice}" class="form-control" type="text" maxlength="3" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">水费余额：</label>
+								<div class="col-sm-4">
+									<input id="waterSum" name="waterSum" th:value="${print.waterSum}" class="form-control" type="text" maxlength="3" />
+								</div>
+								<label class="col-sm-2 control-label">水费缴费：</label>
+								<div class="col-sm-4">
+									<input id="waterMoney" name="waterMoney" th:value="${print.waterMoney}" class="form-control" type="text" maxlength="3" />
+								</div>
+							</div>
+
+
+						    <div class="form-group">	
+								<label class="col-sm-2 control-label">打印日期：</label>
+								<div class="col-sm-4">
+									<input id="printDate" name="printDate" th:value = "${#dates.format(print.printDate,'yyyy-MM-dd HH:mm:ss')}" class="form-control" type="text" maxlength="20" />
+								</div>
+								<label class="col-sm-2 control-label">收取日期：</label>
+								<div class="col-sm-4">
+									<input id="createTime" name="createTime" th:value="${print.createTime}" class="form-control" type="text" maxlength="10" />
+								</div>
+						   </div>
+							
+							
+						   <div class="form-group">	
+								<label class="col-sm-2 control-label">收费人员：</label>
+								<div class="col-sm-4">
+									<input id="createBy" name="createBy" th:value="${print.createBy}" class="form-control" type="text" maxlength="10" />
+								</div>
+								<label class="col-sm-2 control-label">更新日期：</label>
+								<div class="col-sm-4">
+									<input id="updateTime" name="updateTime" th:value = "${#dates.format(print.updateTime,'yyyy-MM-dd HH:mm:ss')}" class="form-control" type="text" maxlength="20" />
+								</div>
+						   </div>
+							
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">大小写金额：</label>
+								<div class="col-sm-4">
+									<input id="printMoney" name="printMoney" th:value = "${print.printMoney}" class="form-control" type="text" maxlength="20" />
+								</div>
+								
+								<label class="col-sm-2 control-label">备注：</label>
+								<div class="col-sm-4">
+									<textarea id="remark" name="remark" th:value="${print.remark}"  maxlength="100" class="input-xlarge" rows="3" style="width:100%;border-radius:5px;"></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/print/print/edit.js">
+	</script>
+</body>
+</html>

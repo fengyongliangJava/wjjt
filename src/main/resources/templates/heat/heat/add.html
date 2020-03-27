@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12 wrapper_main_table">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户编号:</label>
+								<div class="col-sm-4">
+									<input id="userId" name="userId" class="form-control" type="text" maxlength="7" />
+								</div>
+								<label class="col-sm-2 control-label">用户姓名:</label>
+								<div class="col-sm-4">
+									<input id="userName" name="userName" class="form-control" type="text" maxlength="30" />
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户类型:</label><!--  A 现金缴费; B 工资代扣： -->
+								<div class="col-sm-4">
+									<select data-placeholder="选择用户类型" name="userType" id="userType"
+										class="form-control chosen-select" tabindex="2"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<label class="col-sm-2 control-label">用户归属:</label>
+								<div class="col-sm-4">
+									<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+									<input id="userOrgName" name="userOrgName"
+										class="form-control" type="text" style="cursor: pointer;"
+										onclick="openDept()" readonly="readonly" placeholder="用户归属" value="">								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">联系方式:</label>
+								<div class="col-sm-4">
+									<input id="userTell" name="userTell" class="form-control" type="text" maxlength="11" />
+								</div>
+								<label class="col-sm-2 control-label">工资编号:</label>
+								<div class="col-sm-4">
+									<input id="wagesId" name="wagesId" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户状态:</label>
+								<div class="col-sm-4">
+									<select data-placeholder="选择用户状态" name="userState" id="userState"
+										class="form-control chosen-select" tabindex="2"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<label class="col-sm-2 control-label">暖费类型:</label>
+								<div class="col-sm-4">
+									<select data-placeholder="选择暖气类型" name="heatType" id="heatType"
+										class="form-control chosen-select" tabindex="6"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">取暖单价:</label>
+								<div class="col-sm-4">
+									<input id="heatPrice" name="heatPrice" class="form-control" type="text" maxlength="5" />
+								</div>
+								<label class="col-sm-2 control-label">取暖面积:</label>
+								<div class="col-sm-4">
+									<input id="heatArea" name="heatArea" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户暖费:</label>
+								<div class="col-sm-4">
+									<input id="heatCost" name="heatCost" class="form-control" type="text" maxlength="8" />
+								</div>
+								<label class="col-sm-2 control-label">暖费余额:</label>
+								<div class="col-sm-4">
+									<input id="heatSum" name="heatSum" class="form-control" type="text" maxlength="9" />
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">创建时间:</label>
+								<div class="col-sm-4">
+									 <input type="text" class="laydate-icon layer-date form-control" id="createTime"  name="createTime"  placeholder="请选择年月"
+                                      onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:100%;border-radius:5px;" readonly="readonly"/>
+								</div>
+								<label class="col-sm-2 control-label">备注:</label>
+								<div class="col-sm-4">
+									<textarea id="remark" name="remark" maxlength="100" class="input-xlarge" rows="3" style="width:100%;border-radius:5px;"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/heat/heat/add.js">
+	</script>
+</body>
+</html>

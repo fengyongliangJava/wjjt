@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+
+</head>
+<style type="text/css">
+    #tableBox1{margin:30px auto;} 
+	#tableBox1 tr td{width:100px;height:50px;ling-height:50px;text-align:center;}
+    #tableBox2{margin:30px auto;} 
+	#tableBox2 tr td{width:100px;height:50px;ling-height:50px;text-align:center;}
+</style>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content ">
+	
+		<div class="col-sm-12 wrapper_main_table">
+		
+			<div class="ibox">
+			
+				<div class="ibox-body">
+				
+				<div class="fixed-table-toolbar"> 
+					
+	
+			       <div class="gg-nav">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="/charts/tableElecMM">电月统计表格</a></li>
+                            <li><a href="/charts/tableHeatMM">暖月统计表格</a></li>
+                            <li><a href="/charts/tableWaterMM">水月统计表格</a></li>
+                        </ul>
+                    </div>
+					
+					
+					
+					<form id="tableElecMMForm" class="form-inline" role="form" style="margin-top:20px;">
+							
+			              <div class="form-group" style="margin-left:10px;">
+			               	  <label>日期选择：</label>  
+                              <input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年"
+                               onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:120px;border-radius:5px;" readonly="readonly"/>
+			               </div>
+						   
+						   <div class="form-group" style="margin-left:10px;">	
+							 	<label>用户地区：</label>
+								<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+								<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:100px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						   </div>	
+						   
+						   <div class="form-group" style="margin-left:10px;">	
+							 	<label>交费方式：</label>
+								<select data-placeholder="选择交费类型" name="userType" id="userType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						   </div>	
+						   
+						   <div class="form-group" style="margin-left:10px;">	
+							 	<label>电费类型：</label>
+								<select data-placeholder="选择交费类型" name="elecType" id="elecType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						   </div>	
+						   
+						   
+						   <div class="form-group" style="margin-left:5px;">		
+						 		<label>用户编号 ：</label>  
+							   	<input id="userId"  name="userId" class="form-control"  type="text" maxlength="7" style="width:100px;border-radius:5px;"/>
+						   </div>	
+						   
+						   <input id="moneyBtn" class="btn btn-primary" type="button" value="统计"  onclick = "tableElecMM();" style="margin-left:10px;"/>
+						   <input id="moneyBtn" class="btn btn-primary" type="button" value="下载"  onclick = "dowloadElecMM();"/>
+						   <button class="btn btn-primary" type="button" id="print">打印</button>
+						   <input id="moneyBtn" class="btn btn-primary" type="button" value="明细"  onclick = "exportElecMM();"/>
+					</form> 
+					
+					
+			
+
+						 <div id="box1" class='box1'>
+							 <table  id="tableBox1" class="table-hover" border = "1">	 
+							<!-- <table width="900px" height="450px" id="tableBox1" class="table-hover" border = "1"; style="table-layout: fixed">  -->
+							
+								 <tr>
+								 	<td colspan="11">电月统计报表</td>
+								 </tr>
+								 
+								 <tr>
+								 	<td>电费</td><td colspan="10">各项明细</td>
+								 </tr>
+								
+		             		 	 <tr>
+			             		 	<td rowspan="2" >类别</td>
+			                   		<td colspan="3">上月余额(元)</td>
+			                   		<td rowspan="2">电费单价(元)</td>
+			       				    <td rowspan="2">本月电量(度)</td>
+			       				    <td rowspan="2">本月应收(元)</td>
+			       				    <td rowspan="2">本月实收(元)</td>
+			       				    <td colspan="3">期末余额(元)</td>
+		              			 </tr>
+			              			 
+			            		  <tr>
+				                   <td>预存</td>
+				                   <td>欠费</td>
+				                   <td>合计</td>
+				                   <td>预存</td>
+				                   <td>欠费</td>
+				                   <td>合计</td>
+						  		 </tr>	 
+						  		 
+						  	     <tr>
+						  	       <td>矿民用</td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						         <tr>
+						  	       <td>矿商业</td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						         <tr>
+						  	       <td>矿工业1</td>
+								   <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						         <tr>
+						  	       <td>矿工业2</td>
+					  	           <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						  	     <tr>
+						  	       <td>矿工业3</td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+			
+			 				     <tr>
+						  	       <td>乌民用</td>
+							  	   <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 	 
+			 				     <tr>
+						  	       <td>乌商用</td>
+					  	           <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						         <tr>
+						  	       <td>乌工业</td>
+							  	   <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						  	     <tr>
+						  	       <td>煤田民用</td>
+					  	           <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						   	     <tr>
+						  	       <td>煤田商用</td>
+					  	           <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						        <tr>
+						  	       <td>政府部门</td>
+				 				   <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>	
+						  		 
+						  	     <tr>
+						  	       <td>合计</td>
+							  	   <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  	       <td></td>
+						  		 </tr>
+				  		 			 
+								 <tr>
+								 	<td colspan="11" align="center">实收总额: 户  :元</td>
+								 </tr>
+					
+							</table>
+						</div>
+						
+						
+						
+						
+						
+						<div id="box2" class='box2' style="display: none">
+						<table  id="tableBox2" class="table-hover" border = "1"> 
+						     <!--    <table width="900px" height="450px" id="tableBox2" class="table-hover" border = "1"; style="table-layout: fixed"> -->
+							
+								 <tr id="title">
+								 </tr>
+								 
+								 <tr>
+								 	<td align="center">电费</td><td colspan="10" align="center">各项明细</td>
+								 </tr>
+								
+		             		 	 <tr>
+			             		 	<td rowspan="2" align="center">类别</td>
+			                   		<td colspan="3" align="center">上月余额(元)</td>
+			                   		<td rowspan="2" align="center">电费单价(元)</td>
+			       				    <td rowspan="2" align="center">本月电量(度)</td>
+			       				    <td rowspan="2" align="center">本月应收(元)</td>
+			       				    <td rowspan="2" align="center">本月实收(元)</td>
+			       				    <td colspan="3" align="center">本月余额(元)</td>
+		              			 </tr>
+			              			 
+			            		  <tr>
+				                   <td align="center">预存</td>
+				                   <td align="center">欠费</td>
+				                   <td align="center">合计</td>
+				                   <td align="center">预存</td>
+				                   <td align="center">欠费</td>
+				                   <td align="center">合计</td>
+						  		 </tr>	 
+						  		 
+								 <tr id="M">
+								 </tr>	
+						  		 
+			 					 <tr id="S">
+								 </tr>
+						  		 
+								 <tr id="G1">
+								 </tr>
+						  		 
+								 <tr id="G2">
+								 </tr>
+						  		 
+			 					 <tr id="G3">
+								 </tr>
+			
+			 					 <tr id="WM">
+								 </tr>
+						  		 	 
+								 <tr id="WS">
+								 </tr>
+						  		 
+								 <tr id="WG">
+								 </tr>
+								 
+								 <tr id="MM">
+								 </tr>
+								 
+								 <tr id="MS">
+								 </tr>
+								 
+								 <tr id="Z">
+								 </tr>
+				  		 			 
+				  		 		 <tr id="Count">
+								 </tr>
+						 
+								 <tr id="footer">
+								 </tr>
+					
+							</table>
+						</div>
+						
+						
+						
+						
+				
+			</div>
+		</div>
+	</div>
+	
+	<div th:include="include :: footer"></div>
+	
+	
+    <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA"width=0 height=0>
+		<embed id="LODOP_EM" type="application/x-print-lodop"width=0 height=0></embed>
+	</object>
+	
+	
+	<script type="text/javascript" src="/js/appjs/charts/tableElecMM.js"></script>
+</body>
+</html>

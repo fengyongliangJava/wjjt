@@ -1,0 +1,15 @@
+			*{margin:0;padding:0;}
+			body{background:#e2e2e2;font-size:12px;font-family:"微软雅黑";color:#666;}
+
+			/*cac start*/
+			.cac{width:830px;background:#f2f2f2;margin:0 auto;padding:5px;}
+			.cac .c_title{padding: 10px 0 10px 10px;font-size:16px;color:#000;cursor: move;}
+			.cac .c_show .c_txt{width:820px;height:42px;border:none;outline:none;font-size:34px;font-family:"微软雅黑";color:#999;line-height:42px;text-align:right;padding-right:20px;}
+			.cac .c_key ul{border:#fff 1px solid;margin:14px 0;}
+			.cac .c_key ul li{border:1px solid #fff;list-style:none;width:140px;height:65px;background:#eaeaea;float:left;margin:11px;font-size:32px;text-align:center;line-height:65px;cursor: pointer;}
+			.cac .c_key ul li:hover{background:#FFF;}
+			.clear{clear:both;}
+			.cac .c_key .c_tool{background:#738FD8;}
+			.cac .c_key .c_equ{background:#F90;}
+			.c_welcome p{float:right;margin-right:20px;}
+			/*end cac*/

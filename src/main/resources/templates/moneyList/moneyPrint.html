@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content"  id="printId">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<form class="form-horizontal" id="signupForm" style="font-size:18px;">
+						<div class="form-group" style="margin-bottom:5px;">	
+							<label class="col-sm-2 control-label">用户编号：</label>
+								<span class="col-sm-2" style="padding:0px;" th:text="${print.userId}"></span>
+							<label class="col-sm-2 control-label">业主姓名：</label>
+								<span class="col-sm-2" style="padding:0px;" th:text="${print.userName}"></span>
+							<label class="col-sm-2 control-label">地区：</label>
+								<span class="col-sm-2" style="padding:0px;" th:text="${print.userOrgName}"></span>
+						</div>
+						<div class="form-group" style="margin-bottom:5px;">	
+							<label class="col-sm-2 control-label">上月电表：</label>
+								<span class="col-sm-2"  style="padding:0px;" th:text="${print.start}"></span>
+							<label class="col-sm-2 control-label">本月电表：</label>
+								<span class="col-sm-2"  style="padding:0px;" th:text="${print.end}"></span>
+							<label class="col-sm-2 control-label">电量：</label>
+								<span class="col-sm-2"  style="padding:0px;" th:text="${print.elecAmount}"></span>
+						</div>
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left;padding-left:10px;">费用名称</label>
+							<label class="col-sm-3 control-label" style="text-align:left;padding-left:10px;">收费标准</label>
+							<label class="col-sm-2 control-label" style="text-align:left;padding-left:10px;">本月费用</label>
+							<label class="col-sm-2 control-label" style="text-align:left;padding-left:10px;">本次缴费</label>
+							<label class="col-sm-2 control-label" style="text-align:left;padding-left:10px;">用户余额</label>
+						</div>
+
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left">电费</label>
+								<span class="col-sm-3"  style="padding-top:5px;padding-left:50px;" th:text="${print.elecPrice}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.elecCost}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.elecMoney}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:40px;" th:text="${print.elecSum}"></span>
+						</div>
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left">暖费</label>
+								<span class="col-sm-3"  style="padding-top:5px;padding-left:50px;" th:text="${print.heatPrice}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.heatCost}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.heatMoney}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:40px;" th:text="${print.heatSum}"></span>
+						</div>
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left">水费</label>
+								<span class="col-sm-3"  style="padding-top:5px;padding-left:50px;" th:text="${print.waterPrice}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.waterCost}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:50px;" th:text="${print.waterMoney}"></span>
+								<span class="col-sm-2"  style="padding-top:5px;padding-left:40px;" th:text="${print.waterSum}"></span>
+						</div>
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left">大写金额</label>
+								<span class="col-sm-3"  style="padding-top:5px;" id="big" th:text="${print.waterMoney}+${print.heatMoney}+${print.elecMoney}"></span>
+							<label class="col-sm-3 control-label" style="text-align:left">小写金额</label>
+								<span class="col-sm-3"  style="padding-top:5px;" th:text="${print.waterMoney}+${print.heatMoney}+${print.elecMoney}"></span>
+						</div>
+						
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-3 control-label" style="text-align:left">收取<span th:text="${print.createTime}"></span>费用</label>
+						</div>
+						
+						<div class="form-group" style="margin-bottom:5px;">
+							<label class="col-sm-2 control-label" style="text-align:left">收款人</label>
+								<span class="col-sm-4"  style="padding-top:5px;" th:text="${print.createBy}"></span>
+							<label class="col-sm-2 control-label" style="text-align:left">收款日期</label>
+								<span class="col-sm-4"  style="padding-top:5px;" th:text="${print.printDate}==null?null:${#dates.format(print.printDate,'yyyy-MM-dd HH:mm:ss')}"></span>
+						</div>
+					</form>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-sm-8 col-sm-offset-4">
+		<button class="btn btn-primary" type="button" id="printA" >选择打印机</button>
+		<button class="btn btn-primary" type="button" id="print">直接打印</button>
+		<button class="btn btn-primary" type="button" id="preview">打印预览</button>
+	</div>
+	<div th:include="include::footer"></div>
+	
+	
+	<script type="text/javascript" src="/js/appjs/elec/moneyList/moneyList.js"></script>
+	
+	<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA"width=0 height=0>
+		<embed id="LODOP_EM" type="application/x-print-lodop"width=0 height=0></embed>
+	</object>
+	<script type="text/javascript">
+	// 打印预览
+	function _printView(data){
+		var d = $.extend({
+			    style : null,
+				title : '',
+				orgName : '五九集团收费系统',
+				divId : 'printId',// 打印的DIV的ID
+				ids : 'LODOP_OB',
+				fontSize :20,
+				bold :1,
+				htm1 : '8%',
+				htm2 : '0%',
+				htm3 : '100%',
+				htm4 : '100%',
+				htm5 : null,
+				type : '0'
+			}, data || {});
+		d.title = d.title && d.title != '' ? '--'+d.title : ''
+		var LODOP=getLodop(document.getElementById(d.ids),document.getElementById('LODOP_EM'));
+		LODOP.PRINT_INIT(d.orgName+d.title);
+		
+		LODOP.ADD_PRINT_HTML(30,'0%','100%',30,"<div align='center'><strong>"+d.orgName+d.title+"</strong></div>");
+		if(!d.htm5){
+			var strStyleCss = '<link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">'+
+							  '<link rel="stylesheet" href="/js/plugins/layer/theme/default/layer.css?v=3.1.0" id="layuicss-layer">'+
+				              '<link href="/css/style.css?v=4.1.0" rel="stylesheet">';
+			var printHTML = "<body>" + document.getElementById(d.divId).innerHTML + "</body>";
+			d.htm5 = "<head>" + strStyleCss + "</head>" + printHTML;
+		}
+		debugger;
+		LODOP.ADD_PRINT_HTM(d.htm1,d.htm2,d.htm3,d.htm4,d.htm5);
+		
+		//*****如下空白位置适合调用统一功能:******************     
+		LODOP.SET_LICENSES("","A3470E243232414B2A4DDCDE440798FF","C94CEE276DB2187AE6B65D56B3FC2848","");
+        //*******************************************
+		
+		switch(d.type){
+			case '0':
+				LODOP.PREVIEW();
+				break;
+			case '1':
+				LODOP.PRINT();
+				break;
+			case '2':
+				LODOP.PRINTA();
+				break;
+			default:
+				LODOP.PREVIEW();
+				break;
+		}
+		
+	}
+	
+	$('#preview').on('click', function(){
+		_printView({
+			title:'缴费通知单',
+			fontSize :20,
+			htm1 : 88,
+			htm2 : 100,
+			htm3 : 600,
+			htm4 : 600,
+			htm5:null
+		});	
+	});
+	
+	$('#print').on('click', function(){
+		_printView({
+			title:'缴费通知单',
+			fontSize :20,
+			type:'1',
+			htm1 : 88,
+			htm2 : 100,
+			htm3 : 600,
+			htm4 : 600,
+			htm5:null
+		});		
+	});
+	
+	$('#printA').on('click', function(){
+		_printView({
+			title:'缴费通知单',
+			fontSize :20,
+			type : '2',
+			htm1 : 88,
+			htm2 : 100,
+			htm3 : 600,
+			htm4 : 600,
+			htm5:null
+		});
+	});
+    $(document).ready(function() {
+        var num=$("#big").text();
+        if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(num)) return "数据非法";
+        var unit = "京亿万仟佰拾兆万仟佰拾亿仟佰拾万仟佰拾元角分", str = "";
+        num += "00";
+        var p = num.indexOf('.');
+        if (p >= 0)
+            num = num.substring(0, p) + num.substr(p+1, 2);
+        unit = unit.substr(unit.length - num.length);
+        for (var i=0; i < num.length; i++) str += '零壹贰叁肆伍陆柒捌玖'.charAt(num.charAt(i)) + unit.charAt(i);
+        var a = str.replace(/零(仟|佰|拾|角)/g, "零").replace(/(零)+/g, "零").replace(/零(兆|万|亿|元)/g, "$1").replace(/(兆|亿)万/g, "$1").replace(/(京|兆)亿/g, "$1").replace(/(京)兆/g, "$1").replace(/(京|兆|亿|仟|佰|拾)(万?)(.)仟/g, "$1$2零$3仟").replace(/^元零?|零分/g, "").replace(/(元|角)$/g, "$1整");
+        $('#big').html(a);
+
+    })
+
+
+
+	</script>
+</body>
+</html>

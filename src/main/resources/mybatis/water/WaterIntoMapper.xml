@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.water.dao.WaterIntoDao">
+
+	
+	<sql id="query_Water_sql_where">
+  	    <if test="createTime != null and createTime != '' ">and CREATE_TIME = #{createTime} </if> 
+   	    <if test="userOrg != null and userOrg != ''">  and user_org = #{userOrg} </if>
+	    <if test="userId != null and userId != ''"> and USER_ID = #{userId}</if>
+		<if test="userName != null and userName != ''">  and USER_NAME = #{userName}</if>
+		 and  `user_type` = 'B'
+ 	</sql>
+	
+	<sql id="all_Water_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`user_tell`,`user_state`,`wages_id`,`water_type`,`water_price`,`water_cost`,`water_sum`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from water
+	</sql>
+
+	<select id="getWaterIntoList"  parameterType="com.bootdo.water.vo.WaterVo"  resultType="com.bootdo.water.vo.WaterVo">
+		 <include refid="all_Water_columns"></include>
+		 <where>
+		    <include refid="query_Water_sql_where"></include>
+		 </where>
+	</select>
+
+
+	<update id="importWaterIntoExcel" parameterType="com.bootdo.water.vo.WaterVo" >
+		UPDATE WATER  SET  WATER_SUM = WATER_SUM - #{waterSum}
+		 <where>
+		   <include refid="query_Water_sql_where"></include>
+		 </where>
+	</update>
+	
+	
+	<select id="getWaterNumber" resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+		<where>
+    	    <include refid="query_Water_sql_where"></include>
+    	</where>
+	</select>
+</mapper>

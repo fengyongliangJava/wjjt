@@ -1,0 +1,881 @@
+2019-06-15 10:43:01 -Starting BootdoApplication on PC-201905091110 with PID 6808 (D:\eclipse2018-work\bootdo\target\classes started by Administrator in D:\eclipse2018-work\bootdo)
+2019-06-15 10:43:01 -Running with Spring Boot v2.0.3.RELEASE, Spring v5.0.7.RELEASE
+2019-06-15 10:43:01 -The following profiles are active: dev
+2019-06-15 10:43:01 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c9399a4: startup date [Sat Jun 15 10:43:01 CST 2019]; root of context hierarchy
+2019-06-15 10:43:11 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-06-15 10:43:15 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$369080ef] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:15 -Bean 'shiroConfig' of type [com.bootdo.system.config.ShiroConfig$$EnhancerBySpringCGLIB$$28e9af96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:16 -Bean 'userRealm' of type [com.bootdo.system.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Bean 'cacheManager2' of type [net.sf.ehcache.CacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Bean 'ehCacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Cache with name 'com.bootdo.system.shiro.UserRealm.authorizationCache' does not yet exist.  Creating now.
+2019-06-15 10:43:17 -Added EhCache named [com.bootdo.system.shiro.UserRealm.authorizationCache]
+2019-06-15 10:43:17 -Bean 'sessionDAO' of type [org.apache.shiro.session.mgt.eis.MemorySessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:17 -Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-15 10:43:19 -Tomcat initialized with port(s): 8081 (http)
+2019-06-15 10:43:19 -Initializing ProtocolHandler ["http-nio-8081"]
+2019-06-15 10:43:19 -Starting service [Tomcat]
+2019-06-15 10:43:19 -Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-06-15 10:43:19 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Java\JDK\jdk1.8.0_102\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Java\JDK\jdk1.8.0_102\jre\bin;D:/Java/JRE/bin/server;D:/Java/JRE/bin;D:/Java/JRE/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;%JAVA_HOME\bin%;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;C:\Users\Administrator\Desktop;;.]
+2019-06-15 10:43:19 -Initializing Spring embedded WebApplicationContext
+2019-06-15 10:43:19 -Root WebApplicationContext: initialization completed in 18120 ms
+2019-06-15 10:43:20 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-06-15 10:43:20 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-06-15 10:43:20 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-06-15 10:43:20 -Mapping filter: 'requestContextFilter' to: [/*]
+2019-06-15 10:43:20 -Filter xssFilter was not registered (disabled)
+2019-06-15 10:43:20 -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-06-15 10:43:20 -Mapping filter: 'shiroFilterFactoryBean' to: [/*]
+2019-06-15 10:43:20 -Servlet statViewServlet mapped to [/druid/*]
+2019-06-15 10:43:20 -Servlet dispatcherServlet mapped to [/]
+2019-06-15 10:43:25 -ApplicationContext registed-->org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c9399a4: startup date [Sat Jun 15 10:43:01 CST 2019]; root of context hierarchy
+2019-06-15 10:43:26 -Using default implementation for ThreadExecutor
+2019-06-15 10:43:26 -Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-06-15 10:43:26 -Quartz Scheduler v.2.3.0 created.
+2019-06-15 10:43:26 -RAMJobStore initialized.
+2019-06-15 10:43:26 -Scheduler meta-data: Quartz Scheduler (v2.3.0) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-06-15 10:43:26 -Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2019-06-15 10:43:26 -Quartz scheduler version: 2.3.0
+2019-06-15 10:43:26 -JobFactory set to: com.bootdo.common.quartz.factory.JobFactory@54d2f5d3
+2019-06-15 10:43:27 -Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-06-15 10:43:27 -Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-06-15 10:43:30 -Mapped "{[/charts/countDD/exportDD],methods=[GET]}" onto public void com.bootdo.charts.controller.countDDController.exportDD(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.HeatLogVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:30 -Mapped "{[/charts/countDD],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.countDDController.countDD()
+2019-06-15 10:43:30 -Mapped "{[/charts/countDD/getCountDD],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.countDDController.getCountD(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.WaterLogVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:30 -Mapped "{[/charts/countMM/getCountMM],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.countMMController.getCountMM(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.WaterLogVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:30 -Mapped "{[/charts/countMM/exportMM],methods=[GET]}" onto public void com.bootdo.charts.controller.countMMController.exportMM(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.HeatLogVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:30 -Mapped "{[/charts/countMM],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.countMMController.countMM()
+2019-06-15 10:43:30 -Mapped "{[/charts/countOwe/getCountOwe],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.countOweController.getCountOwe(com.bootdo.elec.vo.ElecVo,com.bootdo.water.vo.WaterVo,com.bootdo.heat.vo.HeatVo)
+2019-06-15 10:43:30 -Mapped "{[/charts/countOwe/exportOwe],methods=[GET]}" onto public void com.bootdo.charts.controller.countOweController.exportOwe(com.bootdo.elec.vo.ElecVo,com.bootdo.heat.vo.HeatVo,com.bootdo.water.vo.WaterVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:30 -Mapped "{[/charts/countOwe],methods=[GET]}" onto java.lang.String com.bootdo.charts.controller.countOweController.countOwe()
+2019-06-15 10:43:31 -Mapped "{[/charts/countRun/getCountRun],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.countRunController.getCountRun(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.WaterLogVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/countRun],methods=[GET]}" onto java.lang.String com.bootdo.charts.controller.countRunController.countRun()
+2019-06-15 10:43:31 -Mapped "{[/charts/countRun/exportRun],methods=[GET]}" onto public void com.bootdo.charts.controller.countRunController.exportRun(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.HeatLogVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/countYY],methods=[GET]}" onto java.lang.String com.bootdo.charts.controller.countYYController.countYY()
+2019-06-15 10:43:31 -Mapped "{[/charts/countYY/getCountYY],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.countYYController.getCountYY(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.WaterLogVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/countYY/exportYY],methods=[GET]}" onto public void com.bootdo.charts.controller.countYYController.exportYY(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.HeatLogVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableDD/exportDD],methods=[GET]}" onto public void com.bootdo.charts.controller.tableDDController.exportDD(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.HeatLogVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableDD],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableDDController.countDD()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableDD/getTableDD],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableDDController.getTableDD(com.bootdo.moneyLog.vo.ElecLogVo,com.bootdo.moneyLog.vo.WaterLogVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecMM/tableElecMM],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableElecMMController.tableElecMM(com.bootdo.elec.vo.ElecVo,com.bootdo.moneyLog.vo.ElecLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecMM],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableElecMMController.tableElecMM()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecMM/exportElecMM],methods=[GET]}" onto public void com.bootdo.charts.controller.tableElecMMController.exportElecMM(com.bootdo.elec.vo.ElecVo,com.bootdo.moneyLog.vo.ElecLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecYY/tableElecYY],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableElecYYController.tableElecYY(com.bootdo.elec.vo.ElecVo,com.bootdo.moneyLog.vo.ElecLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecYY],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableElecYYController.tableElecYY()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableElecYY/exportElecYY],methods=[GET]}" onto public void com.bootdo.charts.controller.tableElecYYController.exportElecYY(com.bootdo.elec.vo.ElecVo,com.bootdo.moneyLog.vo.ElecLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatMM/tableHeatMM],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableHeatMMController.tableHeatMM(com.bootdo.heat.vo.HeatVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatMM],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableHeatMMController.tableHeatMM()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatMM/exportHeatMM],methods=[GET]}" onto public void com.bootdo.charts.controller.tableHeatMMController.exportHeatMM(com.bootdo.heat.vo.HeatVo,com.bootdo.moneyLog.vo.HeatLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatYY/exportHeatYY],methods=[GET]}" onto public void com.bootdo.charts.controller.tableHeatYYController.exportHeatYY(com.bootdo.heat.vo.HeatVo,com.bootdo.moneyLog.vo.HeatLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatYY],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableHeatYYController.tableHeatYY()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableHeatYY/tableHeatYY],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableHeatYYController.tableHeatYY(com.bootdo.heat.vo.HeatVo,com.bootdo.moneyLog.vo.HeatLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterMM/tableWaterMM],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.charts.controller.tableWaterMMController.tableWaterMM(com.bootdo.water.vo.WaterVo,com.bootdo.moneyLog.vo.WaterLogVo)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterMM],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableWaterMMController.tableWaterMM()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterMM/exportWaterMM],methods=[GET]}" onto public void com.bootdo.charts.controller.tableWaterMMController.exportWaterMM(com.bootdo.water.vo.WaterVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterYY/exportWaterYY],methods=[GET]}" onto public void com.bootdo.charts.controller.tableWaterYYController.exportWaterYY(com.bootdo.water.vo.WaterVo,com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterYY],methods=[GET]}" onto public java.lang.String com.bootdo.charts.controller.tableWaterYYController.tableWaterYY()
+2019-06-15 10:43:31 -Mapped "{[/charts/tableWaterYY/tableWaterYY],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Integer> com.bootdo.charts.controller.tableWaterYYController.tableWaterYY(com.bootdo.water.vo.WaterVo,com.bootdo.moneyLog.vo.WaterLogVo)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.add()
+2019-06-15 10:43:31 -Mapped "{[/common/dict/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/common/dict/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.update(com.bootdo.common.domain.DictDO)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.DictController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.save(com.bootdo.common.domain.DictDO)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/type],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listType()
+2019-06-15 10:43:31 -Mapped "{[/common/dict],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.dict()
+2019-06-15 10:43:31 -Mapped "{[/common/dict/list/{type}],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listByType(java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/add/{type}/{description}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.addD(org.springframework.ui.Model,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/common/dict/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.add()
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.update(com.bootdo.common.domain.FileDO)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.FileController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.save(com.bootdo.common.domain.FileDO)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/info/{id}]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.info(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.sysFile(org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/upload],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.FileController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/common/sysFile/edit],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/common/generator/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.GeneratorController.update(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/common/generator/list],methods=[GET]}" onto java.util.List<java.util.Map<java.lang.String, java.lang.Object>> com.bootdo.common.controller.GeneratorController.list()
+2019-06-15 10:43:31 -Mapped "{[/common/generator/code/{tableName}]}" onto public void com.bootdo.common.controller.GeneratorController.code(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2019-06-15 10:43:31 -Mapped "{[/common/generator],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.GeneratorController.generator()
+2019-06-15 10:43:31 -Mapped "{[/common/generator/batchCode]}" onto public void com.bootdo.common.controller.GeneratorController.batchCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2019-06-15 10:43:31 -Mapped "{[/common/generator/edit],methods=[GET]}" onto public java.lang.String com.bootdo.common.controller.GeneratorController.edit(org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/common/job/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.add()
+2019-06-15 10:43:31 -Mapped "{[/common/job/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/common/job/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/common/job/update],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.update(com.bootdo.common.domain.TaskDO)
+2019-06-15 10:43:31 -Mapped "{[/common/job/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.JobController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/common/job/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.save(com.bootdo.common.domain.TaskDO)
+2019-06-15 10:43:31 -Mapped "{[/common/job/info/{id}]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.info(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/common/job/changeJobStatus],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.changeJobStatus(java.lang.Long,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/common/job],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.taskScheduleJob()
+2019-06-15 10:43:31 -Mapped "{[/common/job/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/common/log/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/common/log],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.LogController.log()
+2019-06-15 10:43:31 -Mapped "{[/common/log/list],methods=[GET]}" onto com.bootdo.common.domain.PageDO<com.bootdo.common.domain.LogDO> com.bootdo.common.controller.LogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/common/log/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.batchRemove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/common/long],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.LongController.Long()
+2019-06-15 10:43:31 -Mapped "{[/common/time],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.TimeController.Time()
+2019-06-15 10:43:31 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.common.exception.MainsiteErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/error]}" onto public com.bootdo.common.utils.R com.bootdo.common.exception.MainsiteErrorController.handleError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/add],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecController.add()
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/update],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecController.update(com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.elec.controller.ElecController.list(java.util.Map<java.lang.String, java.lang.Object>,com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecController.save(com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/exprotElec],methods=[GET]}" onto public void com.bootdo.elec.controller.ElecController.exprotExcel(com.bootdo.elec.vo.ElecVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/elec/elec],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecController.Elec()
+2019-06-15 10:43:31 -Mapped "{[/elec/elec/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecInto/exprotElecIntoExcel],methods=[GET]}" onto public void com.bootdo.elec.controller.ElecIntoController.exprotExcel(com.bootdo.elec.vo.ElecVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecInto],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecIntoController.ElecInto()
+2019-06-15 10:43:31 -Mapped "{[/elec/elecInto/importElecIntoExcel],methods=[POST]}" onto public java.lang.String com.bootdo.elec.controller.ElecIntoController.importElecIntoExcel(org.springframework.web.multipart.MultipartFile,com.bootdo.elec.vo.ElecVo,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/add],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecPriceController.add()
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecPriceController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecPriceController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/update]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecPriceController.update(com.bootdo.elec.domain.ElecPriceDO)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.elec.controller.ElecPriceController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.elec.controller.ElecPriceController.save(com.bootdo.elec.domain.ElecPriceDO,com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecPriceController.ElecPrice()
+2019-06-15 10:43:31 -Mapped "{[/elec/elecPrice/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecPriceController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.elec.controller.ElecUpLoadController.Elec()
+2019-06-15 10:43:31 -Mapped "{[/elec/elecUpLoad/importElecExcel],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.bootdo.elec.controller.ElecUpLoadController.importElecExcel(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+2019-06-15 10:43:31 -Mapped "{[/elec/elecUpLoad/importElecUser]}" onto public java.lang.String com.bootdo.elec.controller.ElecUpLoadController.importElecUser(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/elec/elecUpLoad/exprotElecExcel],methods=[GET]}" onto public void com.bootdo.elec.controller.ElecUpLoadController.exprotElecExcel(com.bootdo.elec.vo.ElecVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/add],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatController.add()
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatController.remove(java.lang.Integer)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatController.remove(java.lang.Integer[])
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/update]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatController.update(com.bootdo.heat.domain.HeatDO)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.heat.controller.HeatController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatController.save(com.bootdo.heat.domain.HeatDO)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/exprotHeat],methods=[GET]}" onto public void com.bootdo.heat.controller.HeatController.exprotExcel(com.bootdo.heat.vo.HeatVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/heat/heat],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatController.Heat()
+2019-06-15 10:43:31 -Mapped "{[/heat/heat/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatController.edit(java.lang.Integer,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatInto/exprotHeatIntoExcel],methods=[GET]}" onto public void com.bootdo.heat.controller.HeatIntoController.exprotExcel(com.bootdo.heat.vo.HeatVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatInto],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatIntoController.HeatInto()
+2019-06-15 10:43:31 -Mapped "{[/heat/heatInto/importHeatIntoExcel],methods=[POST]}" onto public java.lang.String com.bootdo.heat.controller.HeatIntoController.importHeatIntoExcel(org.springframework.web.multipart.MultipartFile,com.bootdo.heat.vo.HeatVo,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/add],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatPriceController.add()
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatPriceController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatPriceController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/update]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatPriceController.update(com.bootdo.heat.domain.HeatPriceDO)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.heat.controller.HeatPriceController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.heat.controller.HeatPriceController.save(com.bootdo.heat.domain.HeatPriceDO)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatPriceController.HeatPrice()
+2019-06-15 10:43:31 -Mapped "{[/heat/heatPrice/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatPriceController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.heat.controller.HeatUpLoadController.HeatUpLoad()
+2019-06-15 10:43:31 -Mapped "{[/heat/heatUpLoad/createHeatExcel],methods=[POST]}" onto public java.lang.String com.bootdo.heat.controller.HeatUpLoadController.createHeatExcel(com.bootdo.heat.domain.HeatDO) throws java.lang.Exception
+2019-06-15 10:43:31 -Mapped "{[/heat/heatUpLoad/importHeatExcel]}" onto public java.lang.String com.bootdo.heat.controller.HeatUpLoadController.importHeatExcel(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/heat/heatUpLoad/exprotHeatExcel],methods=[GET]}" onto public void com.bootdo.heat.controller.HeatUpLoadController.exprotHeatExcel(com.bootdo.heat.vo.HeatVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyList/queryAllUser],methods=[POST]}" onto public java.util.List<com.bootdo.moneyList.damain.MoneyListDO> com.bootdo.moneyList.controller.MoneyListController.queryAllUser(com.bootdo.moneyList.damain.MoneyListDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyList/moneyPrint/{id}],methods=[GET]}" onto java.lang.String com.bootdo.moneyList.controller.MoneyListController.printEdit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyList/queryAllUserName],methods=[POST]}" onto public java.util.List<com.bootdo.moneyList.damain.MoneyListDO> com.bootdo.moneyList.controller.MoneyListController.getAllUserName(com.bootdo.moneyList.damain.MoneyListDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyList],methods=[GET]}" onto java.lang.String com.bootdo.moneyList.controller.MoneyListController.MoneyList()
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyList/updateMoney],methods=[POST]}" onto public java.lang.Long com.bootdo.moneyList.controller.MoneyListController.updateMoney(com.bootdo.moneyList.damain.MoneyListDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/add],methods=[GET]}" onto java.lang.String com.bootdo.moneyList.controller.MoneyListWZController.add()
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyList.controller.MoneyListWZController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyList.controller.MoneyListWZController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/update],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyList.controller.MoneyListWZController.update(com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.moneyList.controller.MoneyListWZController.list(java.util.Map<java.lang.String, java.lang.Object>,com.bootdo.elec.domain.ElecDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/batchMoney],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyList.controller.MoneyListWZController.batchMoney(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ],methods=[GET]}" onto java.lang.String com.bootdo.moneyList.controller.MoneyListWZController.MoneyWZ()
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/exprotWZ],methods=[GET]}" onto public void com.bootdo.moneyList.controller.MoneyListWZController.exportElecYY(com.bootdo.elec.vo.ElecVo,com.bootdo.moneyLog.vo.ElecLogVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/moneyList/moneyWZ/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.moneyList.controller.MoneyListWZController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/add],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.ElecLogController.add()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.ElecLogController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.ElecLogController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/update]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.ElecLogController.update(java.util.Map<java.lang.String, java.lang.Object>,com.bootdo.moneyLog.domain.ElecLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.moneyLog.controller.ElecLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.ElecLogController.save(com.bootdo.moneyLog.domain.ElecLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.ElecLogController.moneyLog()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/exprotElecLog],methods=[GET]}" onto public void com.bootdo.moneyLog.controller.ElecLogController.exprotElecLog(com.bootdo.moneyLog.vo.ElecLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/elecLog/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.ElecLogController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/add],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.HeatLogController.add()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.HeatLogController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.HeatLogController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/update]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.HeatLogController.update(java.util.Map<java.lang.String, java.lang.Object>,com.bootdo.moneyLog.domain.HeatLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.moneyLog.controller.HeatLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.HeatLogController.save(com.bootdo.moneyLog.domain.HeatLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/exprotHeatLog],methods=[GET]}" onto public void com.bootdo.moneyLog.controller.HeatLogController.exprotHeatLog(com.bootdo.moneyLog.vo.HeatLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.HeatLogController.HeatLog()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/heatLog/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.HeatLogController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/add],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.WaterLogController.add()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.WaterLogController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.WaterLogController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/update]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.WaterLogController.update(java.util.Map<java.lang.String, java.lang.Object>,com.bootdo.moneyLog.domain.WaterLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.moneyLog.controller.WaterLogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.moneyLog.controller.WaterLogController.save(com.bootdo.moneyLog.domain.WaterLogDO)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.WaterLogController.WaterLog()
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/exprotWaterLog],methods=[GET]}" onto public void com.bootdo.moneyLog.controller.WaterLogController.exprotWaterLog(com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyLog/waterLog/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.moneyLog.controller.WaterLogController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/ElecLogUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.moneyUpLoad.Controller.ElecLogUpLoadController.ElecLogUpLoad()
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/ElecLogUpLoad/importElecLogExcel]}" onto public java.lang.String com.bootdo.moneyUpLoad.Controller.ElecLogUpLoadController.importElecLogExcel(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/ElecLogUpLoad/exprotElecLogExcel],methods=[GET]}" onto public void com.bootdo.moneyUpLoad.Controller.ElecLogUpLoadController.exprotElecLogExcel(com.bootdo.moneyLog.vo.ElecLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/HeatLogUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.moneyUpLoad.Controller.HeatLogUpLoadController.HeatLogUpLoad()
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/HeatLogUpLoad/exprotHeatLogExcel],methods=[GET]}" onto public void com.bootdo.moneyUpLoad.Controller.HeatLogUpLoadController.exprotHeatLogExcel(com.bootdo.moneyLog.vo.HeatLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/HeatLogUpLoad/importHeatLogExcel]}" onto public java.lang.String com.bootdo.moneyUpLoad.Controller.HeatLogUpLoadController.importHeatLogExcel(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/WaterLogUpLoad/exprotWaterLogExcel],methods=[GET]}" onto public void com.bootdo.moneyUpLoad.Controller.WaterLogUpLoadController.exprotWaterLogExcel(com.bootdo.moneyLog.vo.WaterLogVo,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/WaterLogUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.moneyUpLoad.Controller.WaterLogUpLoadController.WaterLogLogUpLoad()
+2019-06-15 10:43:31 -Mapped "{[/moneyUpLoad/WaterLogUpLoad/importWaterLogExcel]}" onto public java.lang.String com.bootdo.moneyUpLoad.Controller.WaterLogUpLoadController.importWaterLogExcel(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/add],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.add()
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/update]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.update(com.bootdo.oa.domain.NotifyDO)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/read/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.read(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.save(com.bootdo.oa.domain.NotifyDO)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/message],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.message()
+2019-06-15 10:43:31 -Mapped "{[/oa/notify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.oaNotify()
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/selfList],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.selfList(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/selfNotify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.selefNotify()
+2019-06-15 10:43:31 -Mapped "{[/oa/notify/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/print/print/add],methods=[GET]}" onto java.lang.String com.bootdo.print.controller.PrintController.add()
+2019-06-15 10:43:31 -Mapped "{[/print/print/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.print.controller.PrintController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/print/print/update]}" onto public com.bootdo.common.utils.R com.bootdo.print.controller.PrintController.update(com.bootdo.print.domain.PrintDO)
+2019-06-15 10:43:31 -Mapped "{[/print/print/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.print.controller.PrintController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:31 -Mapped "{[/print/print/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.print.controller.PrintController.save(java.lang.String,com.bootdo.print.domain.PrintDO)
+2019-06-15 10:43:31 -Mapped "{[/print/print/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.print.controller.PrintController.batchRemove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/print/print/printEdit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.print.controller.PrintController.printEdit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/print/print],methods=[GET]}" onto java.lang.String com.bootdo.print.controller.PrintController.Print()
+2019-06-15 10:43:31 -Mapped "{[/print/print/printMoney],methods=[GET]}" onto java.lang.String com.bootdo.print.controller.PrintController.printMoney()
+2019-06-15 10:43:31 -Mapped "{[/print/print/exprotPrint],methods=[GET]}" onto public void com.bootdo.print.controller.PrintController.exprotPrint(com.bootdo.print.vo.PrintVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/print/print/batchPrint],methods=[POST]}" onto public java.util.List<com.bootdo.print.vo.PrintVo> com.bootdo.print.controller.PrintController.batchPrint(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/print/print/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.print.controller.PrintController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.add(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long[])
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/update]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.update(com.bootdo.system.domain.DeptDO)
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/list],methods=[GET]}" onto public java.util.List<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.list()
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.save(com.bootdo.system.domain.DeptDO)
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.tree()
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.dept()
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.treeView()
+2019-06-15 10:43:31 -Mapped "{[/system/sysDept/edit/{deptId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/index],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.index(org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/main],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.main()
+2019-06-15 10:43:31 -Mapped "{[/login],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.login(org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/logout],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.logout()
+2019-06-15 10:43:31 -Mapped "{[/ || ],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.welcome(org.springframework.ui.Model)
+2019-06-15 10:43:31 -Mapped "{[/getVerify],methods=[GET]}" onto public void com.bootdo.system.controller.LoginController.getVerify(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:31 -Mapped "{[/login],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.LoginController.ajaxLogin(java.lang.String,java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:31 -Mapped "{[/sys/menu/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.add(org.springframework.ui.Model,java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/sys/menu/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.remove(java.lang.Long)
+2019-06-15 10:43:31 -Mapped "{[/sys/menu/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.update(com.bootdo.system.domain.MenuDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/menu/list]}" onto java.util.List<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:32 -Mapped "{[/sys/menu/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.save(com.bootdo.system.domain.MenuDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/menu/tree/{roleId}],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree(java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/sys/menu/tree],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree()
+2019-06-15 10:43:32 -Mapped "{[/sys/menu],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.menu(org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/menu/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.edit(org.springframework.ui.Model,java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/sys/role/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.add()
+2019-06-15 10:43:32 -Mapped "{[/sys/role/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.update(com.bootdo.system.domain.RoleDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/role/list],methods=[GET]}" onto java.util.List<com.bootdo.system.domain.RoleDO> com.bootdo.system.controller.RoleController.list()
+2019-06-15 10:43:32 -Mapped "{[/sys/role/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/sys/role/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(com.bootdo.system.domain.RoleDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/role/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.batchRemove(java.lang.Long[])
+2019-06-15 10:43:32 -Mapped "{[/sys/role],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.role()
+2019-06-15 10:43:32 -Mapped "{[/sys/role/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/online/list]}" onto public java.util.List<com.bootdo.system.domain.UserOnline> com.bootdo.system.controller.SessionController.list()
+2019-06-15 10:43:32 -Mapped "{[/sys/online],methods=[GET]}" onto public java.lang.String com.bootdo.system.controller.SessionController.online()
+2019-06-15 10:43:32 -Mapped "{[/sys/online/sessionList]}" onto public java.util.Collection<org.apache.shiro.session.Session> com.bootdo.system.controller.SessionController.sessionList()
+2019-06-15 10:43:32 -Mapped "{[/sys/online/forceLogout/{sessionId}]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.SessionController.forceLogout(java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/exit],methods=[POST]}" onto boolean com.bootdo.system.controller.UserController.exit(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.add(org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.remove(java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.update(com.bootdo.system.domain.UserDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.system.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.save(com.bootdo.system.domain.UserDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.batchRemove(java.lang.Long[])
+2019-06-15 10:43:32 -Mapped "{[/sys/user/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.UserController.tree()
+2019-06-15 10:43:32 -Mapped "{[/sys/user/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.treeView()
+2019-06-15 10:43:32 -Mapped "{[/sys/user/uploadImg],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.uploadImg(org.springframework.web.multipart.MultipartFile,java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/adminResetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.adminResetPwd(com.bootdo.system.vo.UserVO)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/updatePeronal],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.updatePeronal(com.bootdo.system.domain.UserDO)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/personal],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.personal(org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/resetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.resetPwd(com.bootdo.system.vo.UserVO)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/resetPwd/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.resetPwd(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/user],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.user(org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/sys/user/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.edit(org.springframework.ui.Model,java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/file/downImport/{importType}],methods=[GET]}" onto public void com.bootdo.temple.controller.TempletController.downImport(javax.servlet.http.HttpServletResponse,java.lang.String)
+2019-06-15 10:43:32 -Mapped "{[/water/water/add],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterController.add()
+2019-06-15 10:43:32 -Mapped "{[/water/water/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterController.remove(java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/water/water/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterController.remove(java.lang.Long[])
+2019-06-15 10:43:32 -Mapped "{[/water/water/update]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterController.update(com.bootdo.water.domain.WaterDO)
+2019-06-15 10:43:32 -Mapped "{[/water/water/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.water.controller.WaterController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:32 -Mapped "{[/water/water/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterController.save(com.bootdo.water.domain.WaterDO)
+2019-06-15 10:43:32 -Mapped "{[/water/water/exprotWater],methods=[GET]}" onto public void com.bootdo.water.controller.WaterController.exprotExcel(com.bootdo.water.vo.WaterVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:32 -Mapped "{[/water/water],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterController.Water()
+2019-06-15 10:43:32 -Mapped "{[/water/water/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/water/waterInto/exprotWaterIntoExcel],methods=[GET]}" onto public void com.bootdo.water.controller.WaterIntoController.exprotExcel(com.bootdo.water.vo.WaterVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:32 -Mapped "{[/water/waterInto],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterIntoController.WaterInto()
+2019-06-15 10:43:32 -Mapped "{[/water/waterInto/importWaterIntoExcel],methods=[POST]}" onto public java.lang.String com.bootdo.water.controller.WaterIntoController.importWaterIntoExcel(org.springframework.web.multipart.MultipartFile,com.bootdo.water.vo.WaterVo,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/add],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterPriceController.add()
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterPriceController.remove(java.lang.Long)
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterPriceController.remove(java.lang.Long[])
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/update]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterPriceController.update(com.bootdo.water.domain.WaterPriceDO)
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.water.controller.WaterPriceController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.water.controller.WaterPriceController.save(com.bootdo.water.domain.WaterPriceDO)
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterPriceController.WaterPrice()
+2019-06-15 10:43:32 -Mapped "{[/water/waterPrice/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterPriceController.edit(java.lang.Long,org.springframework.ui.Model)
+2019-06-15 10:43:32 -Mapped "{[/water/waterUpLoad/exprotWaterExcel],methods=[GET]}" onto public void com.bootdo.water.controller.WaterUpLoadController.exprotWaterExcel(com.bootdo.water.vo.WaterVo,javax.servlet.http.HttpServletResponse)
+2019-06-15 10:43:32 -Mapped "{[/water/waterUpLoad],methods=[GET]}" onto java.lang.String com.bootdo.water.controller.WaterUpLoadController.WaterUpLoad()
+2019-06-15 10:43:32 -Mapped "{[/water/waterUpLoad/importWaterExcel]}" onto public java.lang.String com.bootdo.water.controller.WaterUpLoadController.importWaterExcel(org.springframework.web.multipart.MultipartFile,java.lang.String,java.lang.String)
+2019-06-15 10:43:32 -Mapped "{[/water/waterUpLoad/createWaterExcel],methods=[POST]}" onto public java.lang.String com.bootdo.water.controller.WaterUpLoadController.createWaterExcel(com.bootdo.water.domain.WaterDO) throws java.lang.Exception
+2019-06-15 10:43:32 -Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-06-15 10:43:32 -Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-06-15 10:43:32 -Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-06-15 10:43:32 -Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-06-15 10:43:32 -Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-06-15 10:43:32 -Mapped URL path [/endpointChat/**] onto handler of type [class org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler]
+2019-06-15 10:43:33 -Initializing ExecutorService  'brokerChannelExecutor'
+2019-06-15 10:43:33 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-06-15 10:43:34 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c9399a4: startup date [Sat Jun 15 10:43:01 CST 2019]; root of context hierarchy
+2019-06-15 10:43:34 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-06-15 10:43:34 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-06-15 10:43:34 -Detected @ExceptionHandler methods in BDExceptionHandler
+2019-06-15 10:43:34 -[THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-06-15 10:43:38 -Registering beans for JMX exposure on startup
+2019-06-15 10:43:38 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-06-15 10:43:38 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2019-06-15 10:43:38 -Starting beans in phase 2147483647
+2019-06-15 10:43:38 -Context refreshed
+2019-06-15 10:43:39 -Found 1 custom documentation plugin(s)
+2019-06-15 10:43:39 -Scanning for api listing references
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_1
+2019-06-15 10:43:40 -Generating unique operation named: addUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: editUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: listUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_2
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_3
+2019-06-15 10:43:40 -Generating unique operation named: saveUsingPOST_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingHEAD_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPOST_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPUT_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPATCH_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingDELETE_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingOPTIONS_1
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingTRACE_1
+2019-06-15 10:43:40 -Generating unique operation named: addUsingGET_2
+2019-06-15 10:43:40 -Generating unique operation named: editUsingGET_2
+2019-06-15 10:43:40 -Generating unique operation named: listUsingGET_2
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_4
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_5
+2019-06-15 10:43:40 -Generating unique operation named: saveUsingPOST_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPOST_2
+2019-06-15 10:43:40 -Generating unique operation named: exprotExcelUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: addUsingGET_3
+2019-06-15 10:43:40 -Generating unique operation named: editUsingGET_3
+2019-06-15 10:43:40 -Generating unique operation named: listUsingGET_3
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_6
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_7
+2019-06-15 10:43:40 -Generating unique operation named: saveUsingPOST_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingGET_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingHEAD_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPOST_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPUT_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPATCH_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingDELETE_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingOPTIONS_2
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingTRACE_2
+2019-06-15 10:43:40 -Generating unique operation named: addUsingGET_4
+2019-06-15 10:43:40 -Generating unique operation named: editUsingGET_4
+2019-06-15 10:43:40 -Generating unique operation named: listUsingGET_4
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_8
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_9
+2019-06-15 10:43:40 -Generating unique operation named: saveUsingPOST_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingGET_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingHEAD_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPOST_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPUT_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPATCH_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingDELETE_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingOPTIONS_3
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingTRACE_3
+2019-06-15 10:43:40 -Generating unique operation named: ElecUsingGET_1
+2019-06-15 10:43:40 -Generating unique operation named: addUsingGET_5
+2019-06-15 10:43:40 -Generating unique operation named: editUsingGET_5
+2019-06-15 10:43:40 -Generating unique operation named: listUsingGET_5
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_10
+2019-06-15 10:43:40 -Generating unique operation named: removeUsingPOST_11
+2019-06-15 10:43:40 -Generating unique operation named: saveUsingPOST_5
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingGET_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingHEAD_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPOST_5
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPUT_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingPATCH_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingDELETE_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingOPTIONS_4
+2019-06-15 10:43:40 -Generating unique operation named: updateUsingTRACE_4
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_6
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_6
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_6
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_7
+2019-06-15 10:43:41 -Generating unique operation named: exprotExcelUsingGET_2
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_7
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_12
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_13
+2019-06-15 10:43:41 -Generating unique operation named: saveUsingPOST_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingGET_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingHEAD_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPUT_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPATCH_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingDELETE_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingOPTIONS_5
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingTRACE_5
+2019-06-15 10:43:41 -Generating unique operation named: exprotExcelUsingGET_3
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_7
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_8
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_8
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_14
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_15
+2019-06-15 10:43:41 -Generating unique operation named: saveUsingPOST_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingGET_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingHEAD_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_8
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPUT_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPATCH_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingDELETE_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingOPTIONS_6
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingTRACE_6
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_8
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_9
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_9
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_16
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_17
+2019-06-15 10:43:41 -Generating unique operation named: saveUsingPOST_8
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingGET_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingHEAD_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_9
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPUT_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPATCH_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingDELETE_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingOPTIONS_7
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingTRACE_7
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_9
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_10
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingGET_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingHEAD_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingPOST_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingPUT_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingPATCH_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingDELETE_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingOPTIONS_1
+2019-06-15 10:43:41 -Generating unique operation named: infoUsingTRACE_1
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_10
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_18
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_19
+2019-06-15 10:43:41 -Generating unique operation named: saveUsingPOST_9
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_10
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_11
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_20
+2019-06-15 10:43:41 -Generating unique operation named: welcomeUsingGET_1
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_10
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_11
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_12
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_21
+2019-06-15 10:43:41 -Generating unique operation named: saveUsingPOST_10
+2019-06-15 10:43:41 -Generating unique operation named: treeUsingGET_1
+2019-06-15 10:43:41 -Generating unique operation named: treeUsingGET_2
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_11
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_11
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_12
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_13
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_22
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_23
+2019-06-15 10:43:41 -Generating unique operation named: updateUsingPOST_12
+2019-06-15 10:43:41 -Generating unique operation named: addUsingGET_12
+2019-06-15 10:43:41 -Generating unique operation named: editUsingGET_13
+2019-06-15 10:43:41 -Generating unique operation named: listUsingGET_14
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_24
+2019-06-15 10:43:41 -Generating unique operation named: removeUsingPOST_25
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingGET_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingHEAD_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_13
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPUT_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPATCH_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingDELETE_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingOPTIONS_8
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingTRACE_8
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_13
+2019-06-15 10:43:42 -Generating unique operation named: batchRemoveUsingPOST_1
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_14
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_15
+2019-06-15 10:43:42 -Generating unique operation named: printEditUsingGET_1
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_26
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingGET_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingHEAD_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_14
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPUT_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPATCH_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingDELETE_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingOPTIONS_9
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingTRACE_9
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_14
+2019-06-15 10:43:42 -Generating unique operation named: batchRemoveUsingPOST_2
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_15
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_16
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_13
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_14
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_15
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_17
+2019-06-15 10:43:42 -Generating unique operation named: listUsingHEAD_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingPOST_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingPUT_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingPATCH_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingDELETE_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingOPTIONS_1
+2019-06-15 10:43:42 -Generating unique operation named: listUsingTRACE_1
+2019-06-15 10:43:42 -Generating unique operation named: countDDUsingGET_1
+2019-06-15 10:43:42 -Generating unique operation named: exportDDUsingGET_1
+2019-06-15 10:43:42 -Generating unique operation named: exportElecYYUsingGET_1
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_15
+2019-06-15 10:43:42 -Generating unique operation named: batchRemoveUsingPOST_3
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_16
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_18
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_27
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_15
+2019-06-15 10:43:42 -Generating unique operation named: treeUsingGET_3
+2019-06-15 10:43:42 -Generating unique operation named: treeViewUsingGET_1
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_16
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_16
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_17
+2019-06-15 10:43:42 -Generating unique operation named: exprotExcelUsingGET_4
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_19
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_28
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_29
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_16
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingGET_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingHEAD_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_17
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPUT_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPATCH_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingDELETE_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingOPTIONS_10
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingTRACE_10
+2019-06-15 10:43:42 -Generating unique operation named: exprotExcelUsingGET_5
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_17
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_18
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_20
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_30
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_31
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_17
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingGET_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingHEAD_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_18
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPUT_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPATCH_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingDELETE_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingOPTIONS_11
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingTRACE_11
+2019-06-15 10:43:42 -Generating unique operation named: addUsingGET_18
+2019-06-15 10:43:42 -Generating unique operation named: editUsingGET_19
+2019-06-15 10:43:42 -Generating unique operation named: listUsingGET_21
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_32
+2019-06-15 10:43:42 -Generating unique operation named: removeUsingPOST_33
+2019-06-15 10:43:42 -Generating unique operation named: saveUsingPOST_18
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingGET_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingHEAD_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPOST_19
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPUT_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingPATCH_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingDELETE_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingOPTIONS_12
+2019-06-15 10:43:42 -Generating unique operation named: updateUsingTRACE_12
+2019-06-15 10:43:42 -Starting Quartz Scheduler now
+2019-06-15 10:43:42 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+2019-06-15 10:43:42 -Starting...
+2019-06-15 10:43:42 -BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-06-15 10:43:42 -Started.
+2019-06-15 10:43:43 -Starting ProtocolHandler ["http-nio-8081"]
+2019-06-15 10:43:43 -Using a shared selector for servlet write/read
+2019-06-15 10:43:43 -Tomcat started on port(s): 8081 (http) with context path ''
+2019-06-15 10:43:43 -Started BootdoApplication in 46.377 seconds (JVM running for 48.497)
+2019-06-15 10:43:43 -==>  Preparing: select `id`,`cron_expression`,`method_name`,`is_concurrent`,`description`,`update_by`,`bean_class`,`create_date`,`job_status`,`job_group`,`update_date`,`create_by`,`spring_bean`,`job_name` from sys_task order by id desc 
+2019-06-15 10:43:43 -==> Parameters: 
+2019-06-15 10:43:43 -<==      Total: 1
+2019-06-15 10:44:32 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2019-06-15 10:45:04 -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-06-15 10:45:04 -FrameworkServlet 'dispatcherServlet': initialization started
+2019-06-15 10:45:04 -FrameworkServlet 'dispatcherServlet': initialization completed in 68 ms
+2019-06-15 10:45:05 -Enabling session validation scheduler...
+2019-06-15 10:45:06 -请求地址 : http://localhost:8081/login;JSESSIONID=4b780845-e389-4dde-bab3-aecd87f6e084
+2019-06-15 10:45:06 -HTTP METHOD : GET
+2019-06-15 10:45:06 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-06-15 10:45:06 -参数 : [{}]
+2019-06-15 10:45:06 -耗时 : 7
+2019-06-15 10:45:06 -返回值 : login
+2019-06-15 10:45:12 -请求地址 : http://localhost:8081/getVerify
+2019-06-15 10:45:12 -HTTP METHOD : GET
+2019-06-15 10:45:12 -CLASS_METHOD : com.bootdo.system.controller.LoginController.getVerify
+2019-06-15 10:45:12 -参数 : [org.apache.shiro.web.servlet.ShiroHttpServletRequest@298c086, org.apache.shiro.web.servlet.ShiroHttpServletResponse@c5f2ea5]
+2019-06-15 10:45:22 -7882
+2019-06-15 10:45:24 -耗时 : 11490
+2019-06-15 10:45:24 -返回值 : null
+2019-06-15 10:45:29 -请求地址 : http://localhost:8081/login
+2019-06-15 10:45:29 -HTTP METHOD : POST
+2019-06-15 10:45:29 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2019-06-15 10:45:29 -参数 : [admin, 111111, 7882, org.apache.shiro.web.servlet.ShiroHttpServletRequest@2ea3aa5a]
+2019-06-15 10:45:29 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2019-06-15 10:45:29 -==> Parameters: admin(String)
+2019-06-15 10:45:30 -<==      Total: 1
+2019-06-15 10:45:30 -耗时 : 353
+2019-06-15 10:45:30 -返回值 : {msg=操作成功, code=0}
+2019-06-15 10:45:30 -More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [clientInboundChannelExecutor, clientOutboundChannelExecutor, brokerChannelExecutor, messageBrokerTaskScheduler]
+2019-06-15 10:45:30 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-06-15 10:45:30 -==> Parameters: 1(Long), admin(String), 登录(String), 353(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2019-06-15 10:45:30.227(Timestamp)
+2019-06-15 10:45:30 -<==    Updates: 1
+2019-06-15 10:45:30 -请求地址 : http://localhost:8081/index
+2019-06-15 10:45:30 -HTTP METHOD : GET
+2019-06-15 10:45:30 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2019-06-15 10:45:30 -参数 : [{}]
+2019-06-15 10:45:30 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2019-06-15 10:45:31 -==> Parameters: 1(Long)
+2019-06-15 10:45:31 -<==      Total: 51
+2019-06-15 10:45:31 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2019-06-15 10:45:31 -==> Parameters: 138(Long)
+2019-06-15 10:45:31 -<==      Total: 1
+2019-06-15 10:45:31 -耗时 : 916
+2019-06-15 10:45:31 -返回值 : index_v1
+2019-06-15 10:45:31 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-06-15 10:45:31 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 916(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-money","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-money","url":"/moneyList/moneyList"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"102","parentId":"106","text":"现金缴费"},{"attributes":{"icon":"fa fa-book","url":"/moneyLog/elecLog"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"107","parentId":"106","text":"缴费记录"},{"attributes":{"icon":"fa fa-bullseye","url":"/moneyUpLoad/ElecLogUpLoad"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"165","parentId":"106","text":"缴费上传"},{"attributes":{"icon":"fa fa-image","url":"/moneyList/moneyWZ"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"164","parentId":"106","text":"乌镇管理"}],"hasChildren":true,"hasParent":false,"id":"106","parentId":"0","text":"收费管理"},{"attributes":{"icon":"fa fa-lightbulb-o","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user-secret","url":"/elec/elec"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"121","parentId":"103","text":"电费用户"},{"attributes":{"icon":"fa fa-file-excel-o","url":"elec/elecInto"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"122","parentId":"103","text":"工资代扣"},{"attributes":{"icon":"fa fa-cloud-upload","url":"elec/elecUpLoad"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"123","parentId":"103","text":"电表上传"},{"attributes":{"icon":"fa fa-cc","url":"/elec/elecPrice"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"124","parentId":"103","text":"电价管理"}],"hasChildren":true,"hasParent":false,"id":"103","parentId":"0","text":"电费管理"},{"attributes":{"icon":"fa fa-tint","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user-secret","url":"/water/water"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"117","parentId":"105","text":"水费用户"},{"attributes":{"icon":"fa fa-file-excel-o","url":"water/waterInto"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"118","parentId":"105","text":"工资代扣"},{"attributes":{"icon":"fa fa-cloud-upload","url":"water/waterUpLoad"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"119","parentId":"105","text":"水费生成"},{"attributes":{"icon":"fa fa-cc","url":"/water/waterPrice"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"120","parentId":"105","text":"水价管理"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"水费管理"},{"attributes":{"icon":"fa fa-fire","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user-secret","url":"/heat/heat"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"113","parentId":"104","text":"暖费用户"},{"attributes":{"icon":"fa fa-file-excel-o","url":"heat/heatInto"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"114","parentId":"104","text":"工资代扣"},{"attributes":{"icon":"fa fa-cloud-upload","url":"heat/heatUpLoad"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"115","parentId":"104","text":"暖费生成"},{"attributes":{"icon":"","url":"/heat/heatPrice"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"116","parentId":"104","text":"暖价管理"}],"hasChildren":true,"hasParent":false,"id":"104","parentId":"0","text":"暖费管理"},{"attributes":{"icon":"fa fa-vcard-o","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-bomb","url":"/print/print"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"149","parentId":"108","text":"票据记录"}],"hasChildren":true,"hasParent":false,"id":"108","parentId":"0","text":"票据管理"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"},{"attributes":{"icon":"fa fa-sun-o","url":"charts/countDD"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"109","parentId":"97","text":"日统计报表"},{"attributes":{"icon":"fa fa-calendar","url":"charts/tableDD"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"161","parentId":"97","text":"日统计表格"},{"attributes":{"icon":"fa fa-registered","url":"charts/countMM"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"110","parentId":"97","text":"月统计报表"},{"attributes":{"icon":"fa fa-building-o","url":"charts/tableElecMM"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"162","parentId":"97","text":"月统计表格"},{"attributes":{"icon":"fa fa-support","url":"charts/countYY"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"111","parentId":"97","text":"年统计报表"},{"attributes":{"icon":"fa fa-book","url":"charts/tableElecYY"},"checked":false,"children":[],"hasChildren":false,"hasParent":tru(String), 127.0.0.1(String), 2019-06-15 10:45:31.862(Timestamp)
+2019-06-15 10:45:32 -<==    Updates: 1
+2019-06-15 10:45:32 -请求地址 : http://localhost:8081/main
+2019-06-15 10:45:32 -HTTP METHOD : GET
+2019-06-15 10:45:32 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-06-15 10:45:32 -参数 : []
+2019-06-15 10:45:32 -耗时 : 0
+2019-06-15 10:45:32 -返回值 : main
+2019-06-15 10:45:35 -请求地址 : http://localhost:8081/oa/notify/message
+2019-06-15 10:45:35 -HTTP METHOD : GET
+2019-06-15 10:45:35 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2019-06-15 10:45:35 -参数 : []
+2019-06-15 10:45:35 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2019-06-15 10:45:35 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2019-06-15 10:45:35 -<==      Total: 0
+2019-06-15 10:45:35 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2019-06-15 10:45:35 -==> Parameters: 1(Long), 0(String)
+2019-06-15 10:45:35 -<==      Total: 1
+2019-06-15 10:45:35 -耗时 : 88
+2019-06-15 10:45:35 -返回值 : com.bootdo.common.utils.PageUtils@4326cfc6
+2019-06-15 10:45:35 -请求地址 : http://localhost:8081/main
+2019-06-15 10:45:35 -HTTP METHOD : GET
+2019-06-15 10:45:35 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-06-15 10:45:35 -参数 : []
+2019-06-15 10:45:35 -耗时 : 0
+2019-06-15 10:45:35 -返回值 : main
+2019-06-15 10:45:38 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2019-06-15 10:45:38 -==> Parameters: 1(Long)
+2019-06-15 10:45:38 -<==      Total: 95
+2019-06-15 10:45:38 -请求地址 : http://localhost:8081/moneyList/moneyList
+2019-06-15 10:45:38 -HTTP METHOD : GET
+2019-06-15 10:45:38 -CLASS_METHOD : com.bootdo.moneyList.controller.MoneyListController.MoneyList
+2019-06-15 10:45:38 -参数 : []
+2019-06-15 10:45:38 -耗时 : 0
+2019-06-15 10:45:38 -返回值 : moneyList/moneyList
+2019-06-15 10:45:42 -请求地址 : http://localhost:8081/system/sysDept/treeView
+2019-06-15 10:45:42 -HTTP METHOD : GET
+2019-06-15 10:45:42 -CLASS_METHOD : com.bootdo.system.controller.DeptController.treeView
+2019-06-15 10:45:42 -参数 : []
+2019-06-15 10:45:42 -耗时 : 1
+2019-06-15 10:45:42 -返回值 : system/dept/deptTree
+2019-06-15 10:45:42 -请求地址 : http://localhost:8081/system/sysDept/tree
+2019-06-15 10:45:42 -HTTP METHOD : GET
+2019-06-15 10:45:42 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2019-06-15 10:45:42 -参数 : []
+2019-06-15 10:45:42 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2019-06-15 10:45:42 -==> Parameters: 
+2019-06-15 10:45:42 -<==      Total: 3
+2019-06-15 10:45:42 -耗时 : 25
+2019-06-15 10:45:42 -返回值 : {"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"3","parentId":"1","state":{"opened":true},"text":"牙星"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"1","state":{"opened":true},"text":"五九"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","state":{"opened":true},"text":"总公司"}
+2019-06-15 11:00:45 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2019-06-15 11:00:45 -==> Parameters: 1(Long)
+2019-06-15 11:00:45 -<==      Total: 95
+2019-06-15 11:00:45 -请求地址 : http://localhost:8081/sys/role
+2019-06-15 11:00:45 -HTTP METHOD : GET
+2019-06-15 11:00:45 -CLASS_METHOD : com.bootdo.system.controller.RoleController.role
+2019-06-15 11:00:45 -参数 : []
+2019-06-15 11:00:45 -耗时 : 1
+2019-06-15 11:00:45 -返回值 : system/role/role
+2019-06-15 11:00:46 -请求地址 : http://localhost:8081/sys/role/list
+2019-06-15 11:00:46 -HTTP METHOD : GET
+2019-06-15 11:00:46 -CLASS_METHOD : com.bootdo.system.controller.RoleController.list
+2019-06-15 11:00:46 -参数 : []
+2019-06-15 11:00:46 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2019-06-15 11:00:46 -==> Parameters: 
+2019-06-15 11:00:46 -<==      Total: 10
+2019-06-15 11:00:46 -耗时 : 200
+2019-06-15 11:00:46 -返回值 : [RoleDO{roleId=10, roleName='录入人员(牙星)', roleSign='null', remark='牙星电表上传权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=9, roleName='录入人员(五九)', roleSign='null', remark='五九电表上传权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=8, roleName='HR人员(牙星)', roleSign='null', remark='牙星工资代扣权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=7, roleName='HR人员(五九)', roleSign='null', remark='五九工资代扣权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=6, roleName='收费人员(牙星)', roleSign='null', remark='五九收费权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=5, roleName='收费人员(五九)', roleSign='null', remark='五九收费权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=4, roleName='收费主管(牙星)', roleSign='null', remark='牙星缴费所有权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=3, roleName='收费主管(五九)', roleSign='null', remark='五九缴费所有权限', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=2, roleName='总公司领导', roleSign='null', remark='总公司领导', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=1, roleName='超级用户角色', roleSign='admin', remark='拥有最高权限', userIdCreate=2, gmtCreate=2017-08-12 00:43:52.0, gmtModified=2017-08-12 19:14:59.0, menuIds=null}]
+2019-06-15 11:00:48 -请求地址 : http://localhost:8081/sys/role/edit/10
+2019-06-15 11:00:48 -HTTP METHOD : GET
+2019-06-15 11:00:48 -CLASS_METHOD : com.bootdo.system.controller.RoleController.edit
+2019-06-15 11:00:48 -参数 : [10, {}]
+2019-06-15 11:00:48 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role where role_id = ? 
+2019-06-15 11:00:48 -==> Parameters: 10(Long)
+2019-06-15 11:00:48 -<==      Total: 1
+2019-06-15 11:00:48 -耗时 : 5
+2019-06-15 11:00:48 -返回值 : system/role/edit
+2019-06-15 11:00:48 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-06-15 11:00:48 -==> Parameters: 1(Long), admin(String), 编辑角色(String), 7(Integer), com.bootdo.system.controller.RoleController.edit()(String), null, 127.0.0.1(String), 2019-06-15 11:00:48.845(Timestamp)
+2019-06-15 11:00:48 -<==    Updates: 1
+2019-06-15 11:00:49 -请求地址 : http://localhost:8081/sys/menu/tree/10
+2019-06-15 11:00:49 -HTTP METHOD : GET
+2019-06-15 11:00:49 -CLASS_METHOD : com.bootdo.system.controller.MenuController.tree
+2019-06-15 11:00:49 -参数 : [10]
+2019-06-15 11:00:49 -==>  Preparing: select `menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified` from sys_menu order by menu_id desc 
+2019-06-15 11:00:49 -==> Parameters: 
+2019-06-15 11:00:49 -<==      Total: 111
+2019-06-15 11:00:49 -==>  Preparing: select menu_id from sys_role_menu WHERE role_id = ? 
+2019-06-15 11:00:49 -==> Parameters: 10(Long)
+2019-06-15 11:00:49 -<==      Total: 3
+2019-06-15 11:00:49 -耗时 : 79
+2019-06-15 11:00:49 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"153","parentId":"149","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"152","parentId":"149","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"151","parentId":"149","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"150","parentId":"149","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"149","parentId":"108","state":{"selected":false},"text":"票据记录"}],"hasChildren":true,"hasParent":false,"id":"108","parentId":"0","state":{"selected":false},"text":"票据管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"165","parentId":"106","state":{"selected":false},"text":"缴费上传"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"164","parentId":"106","state":{"selected":false},"text":"乌镇管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"159","parentId":"107","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"158","parentId":"107","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"157","parentId":"107","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"156","parentId":"107","state":{"selected":false},"text":"添加"}],"hasChildren":true,"hasParent":true,"id":"107","parentId":"106","state":{"selected":false},"text":"缴费记录"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"102","parentId":"106","state":{"selected":false},"text":"现金缴费"}],"hasChildren":true,"hasParent":false,"id":"106","parentId":"0","state":{"selected":false},"text":"收费管理"},{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"141","parentId":"120","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"140","parentId":"120","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"139","parentId":"120","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"138","parentId":"120","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"120","parentId":"105","state":{"selected":false},"text":"水价管理"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"119","parentId":"105","state":{"selected":false},"text":"水费生成"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"118","parentId":"105","state":{"selected":false},"text":"工资代扣"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"145","parentId":"117","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"144","parentId":"117","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"143","parentId":"117","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"142","parentId":"117","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"117","parentId":"105","state":{"selected":false},"text":"水费用户"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","state":{"selected":false},"text":"水费管理"},{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"136","parentId":"116","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"135","parentId":"116","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"134","parentId":"116","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"133","parentId":"116","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"116","parentId":"104","state":{"selected":false},"text":"暖价管理"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"115","parentId":"104","state":{"selected":false},"text":"暖费生成"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"114","parentId":"104","state":{"selected":false},"text":"工资代扣"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"148","parentId":"113","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"147","parentId":"113","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"146","parentId":"113","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"137","parentId":"113","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"113","parentId":"104","state":{"selected":false},"text":"暖费用户"}],"hasChildren":true,"hasParent":false,"id":"104","parentId":"0","state":{"selected":false},"text":"暖费管理"},{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"128","parentId":"124","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"127","parentId":"124","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"126","parentId":"124","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"125","parentId":"124","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"124","parentId":"103","state":{"selected":false},"text":"电价管理"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"123","parentId":"103","state":{"selected":true},"text":"电表上传"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"122","parentId":"103","state":{"selected":false},"text":"工资代扣"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"132","parentId":"121","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"131","parentId":"121","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"130","parentId":"121","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"129","parentId":"121","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"121","parentId":"103","state":{"selected":false},"text":"电费用户"}],"hasChildren":true,"hasParent":false,"id":"103","parentId":"0","state":{"selected":false},"text":"电费管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"163","parentId":"97","state":{"selected":false},"text":"年统计表格"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"162","parentId":"97","state":{"selected":false},"text":"月统计表格"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"161","parentId":"97","state":{"selected":false},"text":"日统计表格"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"155","parentId":"97","state":{"selected":false},"text":"欠费报表图"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"112","parentId":"97","state":{"selected":false},"text":"走势图报表"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"111","parentId":"97","state":{"selected":false},"text":"年统计报表"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"110","parentId":"97","state":{"selected":false},"text":"月统计报表"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"109","parentId":"97","state":{"selected":false},"text":"日统计报表"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","state":{"selected":false},"text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","state":{"selected":false},"text":"统计管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","state":{"selected":false},"text":"在线用户"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","state":{"selected":false},"text":"运行监控"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"30","parentId":"27","state":{"selected":false},"text":"清空"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"29","parentId":"27","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"28","parentId":"27","state":{"selected":false},"text":"刷新"}],"hasChildren":true,"hasParent":true,"id":"27","parentId":"91","state":{"selected":false},"text":"系统日志"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","state":{"selected":false},"text":"系统监控"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","state":{"selected":false},"text":"我的通知"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"89","parentId":"85","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"88","parentId":"85","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"87","parentId":"85","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"86","parentId":"85","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"85","parentId":"84","state":{"selected":false},"text":"通知公告"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","state":{"selected":false},"text":"办公管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"160","parentId":"77","state":{"selected":false},"text":"3D龙卷风"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"154","parentId":"77","state":{"selected":false},"text":"时钟"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","state":{"selected":false},"text":"计算器"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","state":{"selected":false},"text":"系统工具"},{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"76","parentId":"73","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"75","parentId":"73","state":{"selected":false},"text":"刪除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"74","parentId":"73","state":{"selected":false},"text":"增加"}],"hasChildren":true,"hasParent":true,"id":"73","parentId":"3","state":{"selected":false},"text":"组织管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"62","parentId":"7","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"56","parentId":"7","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"55","parentId":"7","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"7","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"7","parentId":"3","state":{"selected":false},"text":"角色管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"26","parentId":"6","state":{"selected":false},"text":"重置密码"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"25","parentId":"6","state":{"selected":false},"text":"停用"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"24","parentId":"6","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"6","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"13","parentId":"6","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"6","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"6","parentId":"3","state":{"selected":false},"text":"用户管理"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"61","parentId":"2","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"22","parentId":"2","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"21","parentId":"2","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"20","parentId":"2","state":{"selected":false},"text":"新增"}],"hasChildren":true,"hasParent":true,"id":"2","parentId":"3","state":{"selected":false},"text":"系统菜单"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","state":{"selected":false},"text":"系统管理"},{"checked":false,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"83","parentId":"78","state":{"selected":false},"text":"批量删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"81","parentId":"78","state":{"selected":false},"text":"删除"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"80","parentId":"78","state":{"selected":false},"text":"编辑"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"79","parentId":"78","state":{"selected":false},"text":"增加"}],"hasChildren":true,"hasParent":true,"id":"78","parentId":"1","state":{"selected":false},"text":"数据字典"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","state":{"selected":false},"text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","state":{"selected":false},"text":"基础管理"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2019-06-15 11:01:10 -请求地址 : http://localhost:8081/system/sysDept
+2019-06-15 11:01:10 -HTTP METHOD : GET
+2019-06-15 11:01:10 -CLASS_METHOD : com.bootdo.system.controller.DeptController.dept
+2019-06-15 11:01:10 -参数 : []
+2019-06-15 11:01:10 -耗时 : 0
+2019-06-15 11:01:10 -返回值 : system/dept/dept
+2019-06-15 11:01:10 -请求地址 : http://localhost:8081/system/sysDept/list
+2019-06-15 11:01:10 -HTTP METHOD : GET
+2019-06-15 11:01:10 -CLASS_METHOD : com.bootdo.system.controller.DeptController.list
+2019-06-15 11:01:10 -参数 : []
+2019-06-15 11:01:10 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2019-06-15 11:01:10 -==> Parameters: 
+2019-06-15 11:01:10 -<==      Total: 3
+2019-06-15 11:01:10 -耗时 : 5
+2019-06-15 11:01:10 -返回值 : [DeptDO{deptId=3, parentId=1, name='牙星', orderNum=2, delFlag=1}, DeptDO{deptId=2, parentId=1, name='五九', orderNum=1, delFlag=1}, DeptDO{deptId=1, parentId=0, name='总公司', orderNum=0, delFlag=1}]
+2019-06-15 11:01:18 -请求地址 : http://localhost:8081/system/sysDept/edit/1
+2019-06-15 11:01:18 -HTTP METHOD : GET
+2019-06-15 11:01:18 -CLASS_METHOD : com.bootdo.system.controller.DeptController.edit
+2019-06-15 11:01:18 -参数 : [1, {}]
+2019-06-15 11:01:18 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-06-15 11:01:18 -==> Parameters: 1(Long)
+2019-06-15 11:01:18 -<==      Total: 1
+2019-06-15 11:01:18 -耗时 : 7
+2019-06-15 11:01:18 -返回值 : system/dept/edit
+2019-06-15 11:01:23 -请求地址 : http://localhost:8081/system/sysDept/edit/3
+2019-06-15 11:01:23 -HTTP METHOD : GET
+2019-06-15 11:01:23 -CLASS_METHOD : com.bootdo.system.controller.DeptController.edit
+2019-06-15 11:01:23 -参数 : [3, {}]
+2019-06-15 11:01:23 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-06-15 11:01:23 -==> Parameters: 3(Long)
+2019-06-15 11:01:23 -<==      Total: 1
+2019-06-15 11:01:23 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-06-15 11:01:23 -==> Parameters: 1(Long)
+2019-06-15 11:01:23 -<==      Total: 1
+2019-06-15 11:01:23 -耗时 : 10
+2019-06-15 11:01:23 -返回值 : system/dept/edit
+2019-06-15 11:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 418]
+2019-06-15 11:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 851]
+2019-06-15 11:45:05 -Validating all active sessions...
+2019-06-15 11:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 12:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 1284]
+2019-06-15 12:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 1717]
+2019-06-15 12:45:05 -Validating all active sessions...
+2019-06-15 12:45:05 -Finished session validation.  [1] sessions were stopped.
+2019-06-15 13:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 2150]
+2019-06-15 13:44:33 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 2583]
+2019-06-15 13:45:05 -Validating all active sessions...
+2019-06-15 13:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 14:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 3016]
+2019-06-15 14:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 3449]
+2019-06-15 14:45:05 -Validating all active sessions...
+2019-06-15 14:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 15:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 3882]
+2019-06-15 15:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 4315]
+2019-06-15 15:45:05 -Validating all active sessions...
+2019-06-15 15:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 16:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 4748]
+2019-06-15 16:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 5181]
+2019-06-15 16:45:05 -Validating all active sessions...
+2019-06-15 16:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 17:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 5614]
+2019-06-15 17:44:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6046]
+2019-06-15 17:45:05 -Validating all active sessions...
+2019-06-15 17:45:05 -Finished session validation.  No sessions were stopped.
+2019-06-15 18:14:32 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6479]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 3, queued tasks = 0, completed tasks = 6859]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 4, queued tasks = 0, completed tasks = 6897]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 3, queued tasks = 0, completed tasks = 6984]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 4, queued tasks = 0, completed tasks = 8368]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 4, queued tasks = 0, completed tasks = 8527]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 3, queued tasks = 0, completed tasks = 8797]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 4, queued tasks = 0, completed tasks = 8998]
+2019-06-15 22:22:01 -WebSocketSession[1 current WS(0)-HttpStream(1)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 4, queued tasks = 0, completed tasks = 9071]
+2019-06-15 22:22:15 -Failed to invoke @ExceptionHandler method: public java.lang.Object com.bootdo.common.exception.BDExceptionHandler.handleException(java.lang.Exception,javax.servlet.http.HttpServletRequest)
+org.apache.shiro.UnavailableSecurityManagerException: No SecurityManager accessible to the calling code, either bound to the org.apache.shiro.util.ThreadContext or as a vm static singleton.  This is an invalid application configuration.
+	at org.apache.shiro.SecurityUtils.getSecurityManager(SecurityUtils.java:123)
+	at org.apache.shiro.subject.Subject$Builder.<init>(Subject.java:627)
+	at org.apache.shiro.SecurityUtils.getSubject(SecurityUtils.java:56)
+	at com.bootdo.common.utils.ShiroUtils.getSubjct(ShiroUtils.java:20)
+	at com.bootdo.common.utils.ShiroUtils.getUser(ShiroUtils.java:23)
+	at com.bootdo.common.exception.BDExceptionHandler.handleException(BDExceptionHandler.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:591)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:527)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:389)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.AsyncContextImpl.setErrorState(AsyncContextImpl.java:424)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:176)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:232)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2019-06-15 22:26:15 -Validating all active sessions...
+2019-06-15 22:26:15 -Finished session validation.  No sessions were stopped.
+2019-06-15 22:26:15 -Validating all active sessions...
+2019-06-15 22:26:15 -Finished session validation.  No sessions were stopped.
+2019-06-15 22:26:15 -Validating all active sessions...
+2019-06-15 22:26:15 -Finished session validation.  No sessions were stopped.
+2019-06-15 22:26:15 -Validating all active sessions...
+2019-06-15 22:26:15 -Finished session validation.  No sessions were stopped.
+2019-06-15 22:44:17 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 15], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 9793]
+2019-06-15 22:44:50 -Validating all active sessions...
+2019-06-15 22:44:50 -Finished session validation.  No sessions were stopped.
+2019-06-15 23:14:17 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 15], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 10154]
+2019-06-15 23:44:17 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 3 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 15], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 10515]
+2019-06-15 23:44:50 -Validating all active sessions...
+2019-06-15 23:44:50 -Finished session validation.  No sessions were stopped.

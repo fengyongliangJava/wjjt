@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style type="text/css">
+#tableBox1{margin:30px auto;}
+#tableBox1 td{text-align:center;width:100px;height:40px;line-height:40px;}
+
+#tableBox2{margin:30px auto;}
+#tableBox2 td{text-align:center;width:100px;height:40px;line-height:40px;}
+
+
+</style>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12 wrapper_main_table">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+					
+						<form id="tableDDForm" class="form-inline" role="form" style="margin-top:20px;">
+						
+							<div class="form-group" style="margin-left:10px;">
+			               	  <label>日期选择：</label>  
+                              <input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年月日"
+                               onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" style="background-color: #fff;width:120px;border-radius:5px;" readonly="readonly"/>
+			                </div>
+			                
+						   	<div class="form-group" style="margin-left:10px;">
+							 	<label>用户地区：</label>
+								<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+								<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:100px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						   	</div>
+						   	
+						    <div class="form-group" style="margin-left:10px;">	
+							 	<label>交费方式：</label>
+								<select data-placeholder="选择交费类型" name="userType" id="userType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						    </div>	
+						   	
+						   	<div class="form-group" style="margin-left:10px;">
+						 		<label>用户编号 ：</label>  
+							   	<input id="userId"  name="userId" class="form-control"  type="text" maxlength="7" style="width:100px;border-radius:5px;"/>
+						   	</div>
+							<input id="moneyBtn" class="btn btn-primary" type="button" value="统计"  onclick = "tableDD();" style="margin-left:10px;"/>
+							<input id="moneyBtn" class="btn btn-primary" type="button" value="下载"  onclick = "dowloadDD();"/>
+							<button class="btn btn-primary" type="button" id="print">打印</button>
+							<input id="moneyBtn" class="btn btn-primary" type="button" value="明细"  onclick = "exportDD();"/>
+						</form>
+						
+						
+						<div id="box1" class='box1'>
+							<table width="900px" height="400px" id="tableBox1" class="table-hover" border = "1"; style="table-layout: fixed">
+								<tr>
+									<td colspan="8">当日结算明细表</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">民用电费</td>
+									<td colspan="2" align="center">商业电费</td>
+									<td colspan="2" align="center">乌尔旗汗</td>
+									<td colspan="2" align="center">煤田电费</td>
+								</tr>
+								<tr>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+								</tr>
+								
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">民用暖费</td>
+									<td colspan="2" align="center">商用暖费</td>
+									<td colspan="2" align="center">工业电费</td>
+									<td colspan="2" align="center">水费</td>
+								</tr>
+								<tr>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+									<td>现金</td>
+									<td>微信</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="8">当日结算总额</td>
+								</tr>
+							</table>
+						 </div>
+						
+						
+						<div id="box2" class='box2' style="display: none">
+						
+							<table width="900px" height="400px"  id="tableBox2" class="table-hover" border = "1"; style="table-layout: fixed">
+							
+					 			<tr id="title">
+								</tr>
+								
+								<tr>
+									<td colspan="2" align="center">民用电费</td>
+									<td colspan="2" align="center">商业电费</td>
+									<td colspan="2" align="center">民用暖费</td>
+									<td colspan="2" align="center">商业暖费</td>
+								</tr>
+								
+								<tr>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+								</tr>
+								
+								
+								<tr id="one">
+								</tr>
+								
+								
+								<tr id="two">
+								</tr>
+								
+								
+								<tr>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+									<td align="center">现金</td>
+									<td align="center">微信</td>
+								</tr>
+								
+								
+								<tr id="three">
+								</tr>
+								
+								<tr id="footer">
+								</tr>
+								
+								
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:include="include :: footer"></div>
+		</div>
+	</div>
+	<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA"width=0 height=0>
+		<embed id="LODOP_EM" type="application/x-print-lodop"width=0 height=0></embed>
+	</object>
+	<script type="text/javascript" src="/js/appjs/charts/tableDD.js"></script>
+
+
+	
+</body>
+</html>

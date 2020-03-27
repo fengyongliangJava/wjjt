@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.heat.dao.HeatIntoDao">
+
+	
+	<sql id="query_Heat_sql_where">
+  	    <if test="createTime != null and createTime != '' ">and CREATE_TIME = #{createTime} </if> 
+   	    <if test="userOrg != null and userOrg != ''">  and user_org = #{userOrg} </if>
+	    <if test="userId != null and userId != ''"> and USER_ID = #{userId}</if>
+		<if test="userName != null and userName != ''">  and USER_NAME = #{userName}</if>
+		 and  `user_type` = 'B'
+ 	</sql>
+	
+	<sql id="all_Heat_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`user_tell`,`user_state`,`wages_id`,`heat_type`,`heat_price`,`heat_area`,`heat_cost`,`heat_sum`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from heat
+	</sql>
+	
+	
+	<select id="getHeatIntoList"  parameterType="com.bootdo.heat.vo.HeatVo"  resultType="com.bootdo.heat.vo.HeatVo">
+	
+		 <include refid="all_Heat_columns"></include>
+		 
+		 <where>
+		    <include refid="query_Heat_sql_where"></include>
+		 </where>
+		 
+	</select>
+	
+	<update id="importHeatIntoExcel" parameterType="com.bootdo.heat.vo.HeatVo" >
+	
+		UPDATE HEAT  SET  HEAT_SUM = HEAT_SUM - #{heatSum}
+		
+	     <where>
+		    <include refid="query_Heat_sql_where"></include>
+		 </where>
+	    
+	</update>
+
+	<select id="getHeatNumber" resultType="com.bootdo.heat.vo.HeatVo">
+	
+	 	<include refid="all_Heat_columns"></include>
+		<where>
+    		<include refid="query_Heat_sql_where"></include>
+		</where>
+	</select>
+</mapper>

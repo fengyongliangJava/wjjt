@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12 wrapper_main_table">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="heatPriceForm">
+						<input id="id" name="id" th:value="${heatPrice.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">日期选择：</label>
+								<div class="col-sm-4">
+			            		<input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年月"
+                                      onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:100%;border-radius:5px;" readonly="readonly"/> 
+								</div>
+								<label class="col-sm-2 control-label">暖价归属：</label>
+								<div class="col-sm-4">
+									<input id="heatOrg" name="heatOrg" th:value="${heatPrice.heatOrg}" class="hidden" type="text">
+									 <input id="heatOrgName" name="heatOrgName"
+										class="form-control" type="text" style="cursor: pointer;"
+										onclick="openDept()" readonly="readonly" placeholder="暖价归属" th:value="${heatPrice.heatOrgName}">
+								</div>
+							</div>
+							<div class="form-group">	
+							
+								<label class="col-sm-2 control-label">民用暖:</label>
+								<div class="col-sm-4">
+									<input id="mHeat" name="mHeat" th:value="${heatPrice.mHeat}" class="form-control" type="text" maxlength="3">
+								</div>
+							
+								<label class="col-sm-2 control-label">商业暖:</label>
+								<div class="col-sm-4">
+									<input id="sHeat" name="sHeat" th:value="${heatPrice.sHeat}" class="form-control" type="text" maxlength="3">
+								</div>
+			
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">工业民：</label>
+								<div class="col-sm-4">
+									<input id="gmHeat" name="gmHeat" th:value="${heatPrice.gmHeat}" class="form-control" type="text" maxlength="3">
+								</div>
+							
+								<label class="col-sm-2 control-label">工业商：</label>
+								<div class="col-sm-4">
+									<input id="gsHeat" name="gsHeat" th:value="${heatPrice.gsHeat}" class="form-control" type="text" maxlength="3">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">备注：</label>
+								<div class="col-sm-4">
+									<textarea id="remark" name="remark" maxlength="100"  th:value="${heatPrice.remark}" class="input-xlarge" rows="3" style="width:100%;border-radius:5px;"></textarea>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/heat/heatPrice/edit.js">
+	</script>
+</body>
+</html>

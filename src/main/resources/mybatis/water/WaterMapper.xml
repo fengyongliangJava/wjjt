@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.water.dao.WaterDao">
+
+
+	<sql id="all_Water_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`user_tell`,`user_state`,`wages_id`,`water_type`,`water_price`,`water_cost`,`water_sum`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from water
+	</sql>
+	
+
+	<sql id="query_Count_sql_where">
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="waterType != null and waterType != ''"> and water_type = #{waterType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	<sql id="query_CountYY_sql_where">
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="waterType != null and waterType != ''"> and water_type = #{waterType} </if>
+	  <if test="userOrg != null and userOrg != ''"> and user_org = #{userOrg} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	<sql id="query_Owe_sql_where">
+	    `water_sum`  &lt; 0
+		<include refid="query_Count_sql_where"></include>
+ 	</sql>
+
+
+	<!--查询上个的日期条件-->
+	<sql id="query_last_month">
+		<if test="createTime != null and createTime != ''">
+		and PERIOD_DIFF( date_format(CONCAT(#{createTime},-01) , '%Y%m' ) , date_format( CONCAT(create_time,"-01"), '%Y%m' ) ) =1
+		</if>
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+
+
+
+	<select id="get" resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+		 where id = #{value}
+	</select>
+
+
+
+	<select id="exprotWater"  resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+    	<where>
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	</select>
+
+
+	<select id="exprotWaterPre"  resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+    	<where>
+    		`water_sum`   &gt;=  0
+		    <include refid="query_Count_sql_where"></include>
+	   </where>	  
+	</select>
+	
+	
+	<select id="exprotWaterPreYY"  resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+    	<where>
+    		`water_sum`   &gt;=  0
+    	    <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>
+		    <include refid="query_CountYY_sql_where"></include>
+	   </where>	  
+	    order by create_time asc
+	</select>
+	
+	
+	
+	<select id="exprotWaterOwe"  resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+    	<where>
+		    <include refid="query_Owe_sql_where"></include>
+	   </where>	  
+	</select>
+
+
+	<select id="exprotWaterOweYY"  resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+    	<where>
+    	    `water_sum`   &lt; 0
+    	    <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>
+		    <include refid="query_CountYY_sql_where"></include>
+	   </where>	  
+	    order by create_time asc
+	</select>
+
+
+
+	<select id="list" resultType="com.bootdo.water.vo.WaterVo">
+		<include refid="all_Water_columns"></include>
+        <where>  
+        	<if test='queryType !=null and queryType == "2"'>
+	            and  `water_sum`   &lt; 0
+	        </if>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from water
+		 <where>  
+		 	<if test='queryType !=null and queryType == "2"'>
+	            and  `water_sum`  &lt; 0
+	        </if>
+			<include refid="query_Count_sql_where"></include>
+		 </where>
+	</select>
+	 
+	 
+	<insert id="save" parameterType="com.bootdo.water.domain.WaterDO" useGeneratedKeys="true" keyProperty="id">
+		insert into water
+		(
+			`user_id`, 
+			`user_name`, 
+			`user_type`, 
+			`user_org`, 
+			`user_tell`, 
+			`user_state`, 
+			`wages_id`, 
+			`water_type`, 
+			`water_price`, 
+		    `water_cost`, 
+			`water_sum`, 
+			`create_time`, 
+			`create_by`, 
+			`update_time`, 
+			`update_by`, 
+			`remark`
+		)
+		values
+		(
+			#{userId}, 
+			#{userName}, 
+			#{userType}, 
+			#{userOrg}, 
+			#{userTell}, 
+			#{userState}, 
+			#{wagesId}, 
+			#{waterType}, 
+			#{waterPrice}, 
+			#{waterCost}, 
+			#{waterSum}, 
+			#{createTime}, 
+			#{createBy}, 
+			#{updateTime}, 
+			#{updateBy}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.water.domain.WaterDO">
+		update water 
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="userName != null">`user_name` = #{userName}, </if>
+			<if test="userType != null">`user_type` = #{userType}, </if>
+			<if test="userOrg != null">`user_org` = #{userOrg}, </if>
+			<if test="userTell != null">`user_tell` = #{userTell}, </if>
+			<if test="userState != null">`user_state` = #{userState}, </if>
+			<if test="wagesId != null">`wages_id` = #{wagesId}, </if>
+			<if test="waterType != null">`water_type` = #{waterType}, </if>
+			<if test="waterPrice != null">`water_price` = #{waterPrice}, </if>
+			<if test="waterCost != null">`water_cost` = #{waterCost}, </if>
+			<if test="waterSum != null">`water_sum` = #{waterSum}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateBy != null">`update_by` = #{updateBy}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<update id="updateState" parameterType="com.bootdo.water.domain.WaterDO">
+		update water   set  `water_cost` = 0  where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from water where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from water where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+		 
+		 
+	
+<!-- 欠费统计  start	 -->		 
+	<select id="WaterCountOwe"  resultType="int">
+	    SELECT COUNT(ID) FROM WATER
+	      <where>  
+		  	<include refid="query_Owe_sql_where"></include>
+		 </where>
+	</select>  
+
+
+ 	<select id="WaterSumOwe"  resultType="java.math.BigDecimal">
+	   SELECT SUM(WATER_SUM) FROM WATER
+	      <where>  
+		  	<include refid="query_Owe_sql_where"></include>
+		 </where>
+	</select>  
+<!-- 欠费统计  end	 -->		
+	
+	
+	
+
+<!-- 月统计表格  start	 -->
+
+	<select id="PreWaterCountMMOld"  resultType="int">
+		select  COUNT(*) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="PreWaterSumMMOld"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="OweWaterCountMMOld"  resultType="int">
+		select  COUNT(*) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	<select id="OweWaterSumMMOld"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_last_month"></include>
+		</where>
+	</select>
+	
+	
+
+	
+
+	<select id="WaterCostMMCount"  resultType="int">
+		select COUNT(ID) from water
+		<where>
+	    	<if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="WaterCostMMSum"  resultType="int">
+		select ifnull(SUM(water_cost),0) from water
+		<where>
+		    <if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+ 	
+ 	
+	
+	<select id="WaterLogMMCount"  resultType="int">
+		select COUNT(ID) from water_log
+		<where>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="WaterLogMMSum"  resultType="int">
+		select ifnull(SUM(water_money),0) from water_log
+		<where>
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<select id="PreWaterCountMMNew"  resultType="int">
+		select  COUNT(ID) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreWaterSumMMNew"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweWaterCountMMNew"  resultType="int">
+		select  COUNT(ID) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweWaterSumMMNew"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+<!-- 月统计表格  end	 -->
+
+
+
+
+
+
+
+
+
+<!-- 年统计表格 -->
+
+	<sql id="query_newdate_sql_where">
+	<!--      <if test="createTime != null and createTime != ''"> and `create_time`   LIKE CONCAT('%',#{createTime},'%')</if>  -->
+		<if test="createTime != null and createTime != ''"> and DATE_FORMAT(CONCAT(create_time,'-01'),'%Y') = #{createTime}</if> 
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+	<sql id="query_newdatemax_sql_where">
+    	<if test="createTime != null and createTime != ''"> and create_time = (select MAX(create_time) from water where DATE_FORMAT(CONCAT(create_time,'-01'),'%Y') = #{createTime})</if> 
+		<include refid="query_CountYY_sql_where"></include>
+	</sql>
+
+
+
+
+	<select id="WaterPrice"  resultType="com.bootdo.water.domain.WaterPriceDO">
+		select m_water,s1_water,s2_water,s3_water,water_org from water_price
+	</select>
+
+
+
+
+	<!--年初预存-->
+	<select id="PreWaterCountYYOld"  resultType="int">
+		select  COUNT(*) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreWaterSumYYOld"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<!--年初欠款-->
+	<select id="OweWaterCountYYOld"  resultType="int">
+		select  COUNT(*) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweWaterSumYYOld"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_Count_sql_where"></include>
+		</where>
+	</select>
+	
+	
+
+	
+	
+	<!--应收-->
+	<select id="WaterCostYYCount"  resultType="int">
+		select COUNT(ID) from water
+		<where>
+		    <if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	<select id="WaterCostYYSum"  resultType="int">
+		select ifnull(SUM(water_cost),0) from water
+		<where>
+		    <if test="userState != null">`user_state` = 1 </if>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	<!--实收-->
+	<select id="WaterLogYYCount"  resultType="int">
+		select COUNT(ID) from water_log
+		<where>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	<select id="WaterLogYYSum"  resultType="int">
+		select ifnull(SUM(water_money),0) from water_log
+		<where>
+			<include refid="query_newdate_sql_where"></include>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<!--期末预存-->
+	<select id="PreWaterCountYYNew"  resultType="int">
+		select  COUNT(ID) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	<select id="PreWaterSumYYNew"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			`water_sum`   &gt;=  0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	<!--期末欠款-->
+	<select id="OweWaterCountYYNew"  resultType="int">
+		select  COUNT(ID) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+	<select id="OweWaterSumYYNew"  resultType="int">
+		select  ifnull(SUM(water_sum),0) from water
+		<where>
+			water_sum &lt;0
+			<include refid="query_newdatemax_sql_where"></include>
+		</where>
+	</select>
+
+
+
+</mapper>

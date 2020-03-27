@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12 wrapper_main_table">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${elecLog.id}"  type="hidden">
+						
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">用户编号：</label>
+								<div class="col-sm-4">
+									<input id="userId" name="userId" th:value="${elecLog.userId}" class="form-control" type="text" maxlength="6" />
+								</div>
+								
+								<label class="col-sm-2 control-label">用户姓名：</label>
+								<div class="col-sm-4">
+									<input id="userName" name="userName" th:value="${elecLog.userName}" class="form-control" type="text" maxlength="30" />
+								</div>
+							</div>
+							<div class="form-group">	
+							<label class="col-sm-2 control-label">用户类型： </label>
+								<div class="col-sm-4">
+									<input id="TuserType" name="TuserType" th:value="${elecLog.userType}" class="form-control" type="hidden">
+									<select data-placeholder="选择缴费类型" name="userType" id="userType"
+										class="form-control chosen-selecLogt" tabindex="2"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div>  
+
+								
+								
+								<label class="col-sm-2 control-label">用户归属：</label>
+								<div class="col-sm-4">
+									<input id="userOrg" name="userOrg" th:value="${elecLog.userOrg}" class="hidden" type="text">
+									<input id="userOrgName" name="userOrgName"
+										class="form-control" type="text" style="cursor: pointer;"
+										onclick="openDept()" readonly="readonly" placeholder="用户地区" th:value="${elecLog.userOrgName}">
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">电费类型： </label>
+								<div class="col-sm-4">
+									<input id="TelecType" name="TelecType" th:value="${elecLog.elecType}" class="form-control" type="hidden">
+									<select data-placeholder="选择电费类型" name="elecType" id="elecType"
+										class="form-control chosen-selecLogt" tabindex="8"
+										style="width: 100%">
+										<option value="">请选择</option>
+									</select>
+								</div> 
+								<label class="col-sm-2 control-label">缴费金额：</label>
+								<div class="col-sm-4">
+									<input id="elecMoney" name="elecMoney" th:value="${elecLog.elecMoney}" class="form-control" type="text" maxlength="7" />
+								</div>
+							</div>
+							
+							<div class="form-group">	
+								<label class="col-sm-2 control-label">创建时间：</label>
+								<div class="col-sm-4">
+									<input id="createTime" name="createTime" th:value="${elecLog.createTime}" class="form-control" type="text" maxlength="10" />
+								</div>
+								<label class="col-sm-2 control-label">缴费日期：</label>
+								<div class="col-sm-4">
+									<input id="moneyDate" name="moneyDate"  th:value = "${#dates.format(elecLog.moneyDate,'yyyy-MM-dd HH:mm:ss')}" class="form-control" type="text" maxlength="20" />
+								</div>
+							</div>
+
+						   <div class="form-group">	
+								<label class="col-sm-2 control-label">备注：</label>
+								<div class="col-sm-4">
+									<textarea id="remark" name="remark" maxlength="100" th:value="${elecLog.remark}" class="input-xlarge" rows="3" style="width:100%;border-radius:5px;"></textarea>
+								</div>
+						   </div>
+							
+						   <div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/moneyLog/elecLog/edit.js">
+	</script>
+</body>
+</html>

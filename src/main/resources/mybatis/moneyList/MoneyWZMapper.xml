@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootdo.moneyList.dao.MoneyWZDao">
+	
+	
+ 	<sql id="all_Elec_columns">
+		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName, `user_tell`,`user_state`,`wages_id`,`elec_type`,`elec_price`,`start`,`end`,`hu`,`elec_amount`,`elec_cost`,`elec_sum`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from elec
+	</sql>  
+
+
+ 	<sql id="all_ElecLog_columns">
+ 		select `id`,`user_id`,`user_name`,`user_type`,`user_org`,(SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,`elec_type`,`elec_money`,`elec_date`,`create_time`,`create_by`,`update_time`,`update_by`,`remark` from elec_log 
+	</sql>  
+
+
+	<sql id="query_Count_sql_where">
+	  `user_id`  LIKE  'W%'   and  user_org  = '2'
+	  <if test="createTime != null and createTime != ''"> and `create_time` = #{createTime}</if>
+	  <if test="userType != null and userType != ''"> and user_type = #{userType} </if>
+	  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+	</sql>
+
+
+	
+	<select id="get" resultType="com.bootdo.elec.vo.ElecVo">
+		 <include refid="all_Elec_columns"></include>
+		 where id = #{value}
+	</select>
+	
+	
+	
+	<select id="exprotWZPre"  resultType="com.bootdo.elec.vo.ElecVo">
+		<include refid="all_Elec_columns"></include> 
+    	<where> 
+    		 <include refid="query_Count_sql_where"></include>
+    		 and `elec_sum`  &gt;= 0
+	   </where>	  
+	</select>
+
+	
+	
+	<select id="exprotWZOwe"  resultType="com.bootdo.elec.vo.ElecVo"> 
+		<include refid="all_Elec_columns"></include>
+    	<where>
+    	     <include refid="query_Count_sql_where"></include>
+    		 and `elec_sum`  &lt; 0
+	   </where>	
+	</select>
+
+
+	<select id="exprotWZLog"  resultType="com.bootdo.moneyLog.vo.ElecLogVo">
+	   <include refid="all_ElecLog_columns"></include>
+    	<where>
+    	    <include refid="query_Count_sql_where"></include>
+	   </where>	
+	</select>
+
+
+
+	<select id="list" resultType="com.bootdo.elec.vo.ElecVo">
+	    <include refid="all_Elec_columns"></include>
+    	<where>
+    		 <include refid="query_Count_sql_where"></include>
+    		 <if test='queryType !=null and queryType == "2"'>
+	            and  `elec_sum`   &lt; 0
+	        </if>
+	   </where>	  
+	      		   
+	      		     	  	
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+        
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+		
+	</select>
+	
+	
+ 	<select id="count" resultType="int">
+		select count(*) from elec
+		<where>  
+		    <include refid="query_Count_sql_where"></include>
+		 	 <if test='queryType !=null and queryType == "2"'>
+	            and  `elec_sum`   &lt; 0
+	        </if>
+	   </where>	  
+	</select>
+	 
+	 
+	<select id="WZElecList" resultType="com.bootdo.elec.vo.ElecVo">
+	     <include refid="all_Elec_columns"></include>
+		 where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+	 
+
+</mapper>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.moneyList.dao.MoneyListDao">
+
+
+
+
+
+
+
+
+
+
+    <sql id="all_columns">
+        COUNT(*) number,
+        user_id,
+	    user_name,
+	    user_type,
+        (SELECT  t.`name`  FROM sys_dept  t WHERE t.`dept_id` = `user_org`) AS userOrgName,
+	    user_tell,
+	    user_state,
+    </sql>
+
+    <sql id="all_elec_columns">
+       elec_type as moneyType,
+	   elec_price as userPrice,
+	   elec_amount as userArea,
+	   elec_cost as userCost,
+	   elec_Sum as userSum
+    </sql>
+
+    <sql id="all_heat_columns">
+       heat_type  as moneyType,
+	   heat_price as userPrice,
+	   heat_area as userArea,
+	   heat_cost as userCost,
+	   heat_Sum as userSum
+    </sql>
+
+    <sql id="all_water_columns">
+       water_type as moneyType,
+	   water_price as userPrice,
+	   water_price as userArea,
+	   water_price as userCost,
+	   water_Sum as userSum
+    </sql>
+
+
+    <sql id="all_query">
+        <where>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime}
+            </if>
+            <if test="userOrg != null and userOrg != ''">
+                and user_org = #{userOrg}
+            </if>
+             <if test="userId != null and userId != '' ">
+                and user_Id = #{userId}
+            </if>
+             <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            and user_type != 'B'
+        </where>
+    </sql>
+
+
+
+    <sql id="name_query">
+        <where>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime}
+            </if>
+            <if test="userOrg != null and userOrg != ''">
+                and user_org = #{userOrg}
+            </if>          
+            <if test="userName != null and userName != '' ">
+                and user_name like CONCAT(CONCAT('%',#{userName},'%'))
+            </if>
+             and user_type != 'B'
+        </where>
+    </sql>
+
+	
+
+    <select id="getAll"  resultType="com.bootdo.moneyList.damain.MoneyListDO">
+        select
+                <include refid="all_columns"></include>
+                <include refid="all_elec_columns"></include>
+        from ELEC
+        <include refid="all_query"></include>
+        UNION ALL select
+                <include refid="all_columns"></include>
+                <include refid="all_heat_columns"></include>
+        from heat
+        <include refid="all_query"></include>
+        UNION ALL select
+                <include refid="all_columns"></include>
+                <include refid="all_water_columns"></include>
+        from water
+        <include refid="all_query"></include>
+    </select>
+
+
+
+    <select id="getAllUserName"  resultType="com.bootdo.moneyList.damain.MoneyListDO">
+    
+        select DISTINCT user_name from(
+        
+	       select user_name
+	       from ELEC
+	       <include refid="name_query"></include>
+	       UNION ALL select
+	       user_name
+	       from heat
+	       <include refid="name_query"></include>
+	       UNION ALL select
+	       user_name
+	       from water
+	       <include refid="name_query"></include>
+         )userName
+         
+    </select>
+
+
+	<!--电费更新余额-->
+    <update id="updateElec" parameterType="com.bootdo.moneyList.damain.MoneyListDO">
+        update ELEC set elec_sum = elec_sum + #{money},user_type=#{userType}
+        <include refid="all_query"></include>
+    </update>
+
+    <!--暖费更新余额-->
+
+    <update id="updateHeat" parameterType="com.bootdo.moneyList.damain.MoneyListDO">
+        update heat set heat_sum = heat_sum + #{money},user_type=#{userType}
+        <include refid="all_query"></include>
+    </update>
+
+    <!--水费更新余额-->
+
+    <update id="updateWater" parameterType="com.bootdo.moneyList.damain.MoneyListDO">
+        update water set water_sum = water_sum + #{money},user_type=#{userType}
+        <include refid="all_query"></include>
+    </update>
+    
+    <!--单独查询电费-->
+    <select id="getElecPrint"  resultType="com.bootdo.elec.domain.ElecDO">
+        select el.start,el.end,el.hu,el.elec_amount,el.elec_cost,el.elec_price,el.elec_sum
+       from elec el
+        <where>
+            <if test="userId != null and userId != '' ">
+                and el.user_Id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and el.create_time = #{createTime}
+            </if>
+            <if test="userOrg != null and userOrg != ''">
+                and el.user_org = #{userOrg}
+            </if>
+            <if test="userName != null and userName != ''">
+                and el.user_name = #{userName}
+            </if>
+            and user_type != 'B'
+        </where>
+
+    </select>
+
+    <!--单独查询暖费-->
+    <select id="getHeatPrint"  resultType="com.bootdo.heat.domain.HeatDO">
+        select he.heat_area,
+        he.heat_cost,
+        he.heat_price,
+        he.heat_sum
+        from heat he
+        <where>
+            <if test="userId != null and userId != '' ">
+                and he.user_Id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and he.create_time = #{createTime}
+            </if>
+            <if test="userOrg != null and userOrg != ''">
+                and he.user_org = #{userOrg}
+            </if>
+            <if test="userName != null and userName != ''">
+                and he.user_name = #{userName}
+            </if>
+            and user_type != 'B'
+        </where>
+
+    </select>
+
+    <!--单独查询水费-->
+    <select id="getWaterPrint"  resultType="com.bootdo.water.domain.WaterDO">
+        select  wa.water_price,wa.water_cost,wa.water_sum
+        from water wa
+        <where>
+            <if test="userId != null and userId != '' ">
+                and wa.user_Id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and wa.create_time = #{createTime}
+            </if>
+            <if test="userOrg != null and userOrg != ''">
+                and wa.user_org = #{userOrg}
+            </if>
+            <if test="userName != null and userName != ''">
+                and wa.user_name = #{userName}
+            </if>
+            and user_type != 'B'
+        </where>
+
+    </select>
+
+
+
+
+</mapper>

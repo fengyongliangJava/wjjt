@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head th:include="include :: header">
+</head>
+
+
+<body class="gray-bg">
+
+
+	<div class="wrapper wrapper-content ">
+	
+		<div class="col-sm-12 wrapper_main_table">
+		
+			<div class="ibox">
+			
+				<div class="ibox-body">
+				
+				<div class="fixed-table-toolbar"> 
+					
+                    <div class="gg-nav">
+                        <ul class="nav nav-tabs">
+
+                            <li><a href="/moneyUpLoad/ElecLogUpLoad">电交费记录上传</a></li>
+                            <li class="active"><a href="/moneyUpLoad/HeatLogUpLoad"> 暖交费记录上传</a></li>
+                            <li><a href="/moneyUpLoad/WaterLogUpLoad">水交费记录上传</a></li>
+                        </ul>
+                    </div>
+     
+             
+					<form id="HeatLogForm" class="form-inline" role="form" style="margin-top:15px;">
+							
+						  <div class="form-group" style="width:200px;">
+							   <input type="text" id='excelFile' name='excelFile' placeholder="请选择Excel" class="form-control" style="width:130px;border-radius:5px;"disabled/><input type="button" id="i-check" value="浏览" class="btn btn-primary" onclick="$('#file').click();"><input type="file" id='file' class="form-control" name="file" accept=".xlsx" onchange="$('#excelFile').val($('#file').val());" style="display: none"/> 
+					       </div>
+							
+							
+							
+				           <div class="form-group">
+			               	  <label>日期选择:</label>  
+                              <input type="text" class="laydate-icon layer-date form-control" id="createTime"  name="createTime" placeholder="请选择年月"
+                               onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:120px;border-radius:5px;" readonly="readonly"/>
+			               </div>
+			               
+						   
+						   <div class="form-group">	
+							 	<label>用户地区：</label>
+								<input id="userOrg" name="userOrg" value="" class="hidden" type="text">
+								<input id="userOrgName" name="userOrgName" class="form-control" type="text" style="cursor: pointer;width:100px;border-radius:5px;"onclick="openDept()" readonly="readonly" placeholder="用户地区" value="">
+						   </div>	
+						  								
+					      <div class="form-group">	
+							 	<label>缴费方式：</label>
+								<select data-placeholder="选择缴费方式" name="userType" id="userType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						   </div>	
+						   						
+						   <div class="form-group">	
+							 	<label>暖费类型：</label>
+								<select data-placeholder="选择暖费类型" name="heatType" id="heatType"
+									class="form-control chosen-select" tabindex="2"
+									style="width:100px;border-radius:5px;">
+									<option value="">请选择</option>
+								</select>
+						   </div>	
+						   
+						   
+						   <div class="form-group">		
+						 		<label>用户编号:</label>  
+							   	<input id="userId"  name="userId" class="form-control"  type="text" maxlength="7" style="width:100px;border-radius:5px;"/>
+						   </div>	
+						   			   
+						   
+                            <input id="btnSubmit" class="btn btn-primary" type="button" value="数据上传"  onclick = "importHeatLogExcel();" />
+							<input id="btnSubmit" class="btn btn-primary" type="button" value="数据导出"  onclick = "exprotHeatLogExcel();"/> 
+							<input id="btnSubmit" class="btn btn-primary" type="button" value="模板下载"   onclick = "downloadExcel();"/>  
+				   	</form> 
+						 
+				</div> 
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/moneyUpLoad/HeatLogUpLoad.js"></script>
+</body>
+</html>

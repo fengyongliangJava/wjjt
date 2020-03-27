@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12 wrapper_main_table">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="elecPriceForm">
+						<input id="id" name="id" th:value="${elecPrice.id}"  type="hidden">
+						
+						
+						  <div class="form-group">	
+								<label class="col-sm-2 control-label">日期选择：</label>
+								<div class="col-sm-4">
+			            		<input type="text" class="laydate-icon layer-date form-control" id="createTime" name="createTime"  placeholder="请选择年月"
+                                      onclick="laydate({istime: true, format: 'YYYY-MM'})" style="background-color: #fff;width:100%;border-radius:5px;" readonly="readonly"/> 
+								</div>
+
+							    <label class="col-sm-2 control-label">电价归属：</label>
+								<div class="col-sm-4">
+									<input id="elecOrg" name="elecOrg" th:value="${elecPrice.elecOrg}" class="hidden" type="text">
+									 <input id="elecOrgName" name="elecOrgName"
+										class="form-control" type="text" style="cursor: pointer;"
+										onclick="openDept()" readonly="readonly" placeholder="电价归属" th:value="${elecPrice.elecOrgName}">
+								</div>
+						  </div>
+	
+							<div class="form-group">	
+							    <label class="col-sm-2 control-label">民用电:</label>
+								<div class="col-sm-4">
+									<input id="mElec" name="mElec" th:value="${elecPrice.mElec}" class="form-control" type="text" maxlength="5" >
+								</div>
+							
+								<label class="col-sm-2 control-label">商业电:</label>
+								<div class="col-sm-4">
+									<input id="sElec" name="sElec" th:value="${elecPrice.sElec}" class="form-control" type="text" maxlength="5" >
+								</div>
+							</div>
+							
+							<div class="form-group">	
+							
+								<label class="col-sm-2 control-label">工业电1:</label>
+								<div class="col-sm-4">
+									<input id="g1Elec" name="g1Elec" th:value="${elecPrice.g1Elec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+								<label class="col-sm-2 control-label">工业电2:</label>
+								<div class="col-sm-4">
+									<input id="g2Elec" name="g2Elec" th:value="${elecPrice.g2Elec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+							</div>
+							<div class="form-group">	
+							
+							    <label class="col-sm-2 control-label">工业电3:</label>
+								<div class="col-sm-4">
+									<input id="g3Elec" name="g3Elec" th:value="${elecPrice.g3Elec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+								<label class="col-sm-2 control-label">乌民用:</label>
+								<div class="col-sm-4">
+									<input id="wmElec" name="wmElec" th:value="${elecPrice.wmElec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+							</div>
+							<div class="form-group">	
+															
+								<label class="col-sm-2 control-label">乌商业:</label>
+								<div class="col-sm-4">
+									<input id="wsElec" name="wsElec" th:value="${elecPrice.wsElec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+								<label class="col-sm-2 control-label">乌工业:</label>
+								<div class="col-sm-4">
+									<input id="wgElec" name="wgElec" th:value="${elecPrice.wgElec}" class="form-control" type="text" maxlength="5">
+								</div>
+
+							</div>
+							
+							<div class="form-group">	
+							
+								<label class="col-sm-2 control-label">煤田民用:</label>
+								<div class="col-sm-4">
+									<input id="mmElec" name="mmElec" th:value="${elecPrice.mmElec}" class="form-control" type="text" maxlength="5">
+								</div>
+							
+								<label class="col-sm-2 control-label">煤田商业:</label>
+								<div class="col-sm-4">
+									<input id="msElec" name="msElec" th:value="${elecPrice.msElec}" class="form-control" type="text" maxlength="5">
+								</div>
+							</div>
+							
+						   <div class="form-group">	
+								<label class="col-sm-2 control-label">政府部门:</label>
+								<div class="col-sm-4">
+									<input id="zElec" name="zElec" th:value="${elecPrice.zElec}" class="form-control" type="text" maxlength="5">
+								</div>
+								
+								<label class="col-sm-2 control-label">备注：</label>
+								<div class="col-sm-4">
+									<textarea id="remark" name="remark" maxlength="100"  th:value="${elecPrice.remark}" class="input-xlarge" rows="3" style="width:100%;border-radius:5px;"></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/elec/elecPrice/edit.js">
+	</script>
+</body>
+</html>
